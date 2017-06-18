@@ -15,3 +15,8 @@ export const mail =({tintColor, focused}) =>(
 export const user =({tintColor, focused})=>(
 		<FAIcon name="user" size={30} style={{color: tintColor}}/>
 	)
+
+export const arrowUp = <EntypoIcon name="arrow-up"  size={15} />
+export const arrowDown = <EntypoIcon name="arrow-down" size={15} />
+export const comment = <FAIcon name ="comment" size={15}/>
+export const share = <EntypoIcon name="share-alternative" size={15} />

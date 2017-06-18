@@ -2,6 +2,7 @@ import * as ACTIONS from './constants';
 import * as actionCreators from './actionCreators';
 import { AsyncStorage } from 'react-native';
 export * from './actionCreators';
+import axios from 'axios';
 
 const TOKEN_KEY   = '@ReactNativeReddit:token';
 const EXPIRES_KEY = '@ReactNativeReddit:expires';
@@ -53,4 +54,17 @@ export const isTokenExpired = ()=>{
 		const { expires } = getState();
 		return Date.now() > expires ? true : false;
 	}
+}
+
+export const fetchFeed = (token)=>{
+	const config = {
+		baseURL: 'https://oauth.reddit.com',
+		headers: {'Authorization': `bearer ${token}`}
+	}
+	console.log(token)
+	return (dispatch)=>{
+		axios.get('/hot', config)
+			.then(response=>console.log(response))
+			.catch(error=>console.error(error.response))
+		}
 }
