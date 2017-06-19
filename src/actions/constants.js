@@ -8,3 +8,5 @@ export const LOGIN_URI 			= `https://www.reddit.com/api/v1/authorize.compact?cli
 // Redux Types
 export const AUTH_USER 			= 'AUTH_USER';
 export const FETCHING_USER_DATA = 'FETCHING_USER_DATA';
+export const LOADING_POSTS		= 'LOADING_POSTS';
+export const STORE_POSTS 		= 'STORE_POSTS';

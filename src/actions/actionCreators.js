@@ -7,4 +7,13 @@ export const authenticateUser = (token, expires)=>{
 		token,
 		expires
 	}
-}
+};
+
+export const savePosts = (posts)=>{
+	return {
+		type: ACTIONS.STORE_POSTS,
+		posts
+	}
+};
+
+export const isLoading = ()=>({type: ACTIONS.LOADING_POSTS });

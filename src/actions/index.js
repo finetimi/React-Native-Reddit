@@ -64,7 +64,10 @@ export const fetchFeed = (token)=>{
 	console.log(token)
 	return (dispatch)=>{
 		axios.get('/hot', config)
-			.then(response=>console.log(response))
+			.then(response=>{
+				const posts = response.data.data.children;
+				dispatch(actionCreators.savePosts(posts));
+			})
 			.catch(error=>console.error(error.response))
 		}
 }

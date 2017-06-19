@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -21,9 +22,17 @@ const labelStyle =(props, alignSelf)=> ({
 	color: props.focused ? props.tintColor : "#929292",
 	alignSelf
 });
+// IndicatorStyle is an absolute Positoned View
+const indicatorStyle = (props, alignSelf) => ({
+	backgroundColor: props.activeTintColor,
+	marginHorizontal: 15,
+	alignSelf: 'flex-end',
+	// width: 120,
+	// left: 30,
+});
 
-// Navigator for the Home tab which
-// navigates between Home and Popular
+/* Navigator for the Home tab which
+   navigates between Home and Popular */
 const homeTabs = TabNavigator({
 	Home: {
 		screen: Home,
@@ -38,7 +47,7 @@ const homeTabs = TabNavigator({
 		}
 	},
 }, {
-	tabBarComponent: (props)=> <TabBarTop  {...props} pr={console.log(props)}/>,
+	tabBarComponent: (props)=> <TabBarTop {...props} some={console.log(props)} indicatorStyle={indicatorStyle(props, 'flex-end')} />,
 	tabBarPosition: 'top', 
 	animationEnabled: true,
 	tabBarOptions: {
