@@ -17,13 +17,7 @@ const saveToken = async (token, expires)=>{
 	}
 }
 
-const retrieveFromStorage = async (key)=>{
-	try{
-		await AsyncStorage.getItem(key);
-	} catch (error){
-		return console.error(error);
-	}
-}
+const retrieveFromStorage = async (key)=> await AsyncStorage.getItem(key);
 
 export const authUser = (token, expires)=>{
 	// Save token to AsyncStorage then save to redux state
@@ -41,9 +35,13 @@ export const logoutUser = async ()=>{
 
 export const ensureAuthentication =()=>{
 	const expires = retrieveFromStorage(EXPIRES_KEY);
+	// Check if EXPIRES_KEY exists and if token is expired
 	if (!expires || Date.now() > expires){
+		return logoutUser();
 	}
+	// Grab token from Async storage and store in state
 	return (dispatch)=>{
-
+		const token = retrieveFromStorage(TOKEN_KEY);
+		authUser(token, expires);
 	}
 }
