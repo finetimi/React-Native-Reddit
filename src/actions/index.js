@@ -65,7 +65,8 @@ export const fetchFeed = (token)=>{
 	return (dispatch)=>{
 		axios.get('/hot', config)
 			.then(response=>{
-				const posts = response.data.data.children;
+				const data = response.data.data.children; // Array of objects with post and kind
+				const posts = data.map(post=>post.data); // Actual data needed
 				dispatch(actionCreators.savePosts(posts));
 			})
 			.catch(error=>console.error(error.response))

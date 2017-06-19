@@ -31,6 +31,7 @@ class Popular extends Component {
 	}
 }
 const mapStateToProps =(state)=>({
-	state: state.AuthReducer
+	state:{ ...state.AuthReducer, ...state.PostReducer}
+
 })
 export default connect(mapStateToProps, actions)(Popular);

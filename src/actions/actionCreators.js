@@ -1,9 +1,9 @@
-import * as ACTIONS from './constants';
+import * as ACTIONTYPE from './constants';
 
 // store autheticated userData in state
 export const authenticateUser = (token, expires)=>{
 	return {
-		type: ACTIONS.AUTH_USER,
+		type: ACTIONTYPE.AUTH_USER,
 		token,
 		expires
 	}
@@ -11,9 +11,9 @@ export const authenticateUser = (token, expires)=>{
 
 export const savePosts = (posts)=>{
 	return {
-		type: ACTIONS.STORE_POSTS,
+		type: ACTIONTYPE.STORE_POSTS,
 		posts
 	}
 };
 
-export const isLoading = ()=>({type: ACTIONS.LOADING_POSTS });
+export const isLoading = ()=>({type: ACTIONTYPE.LOADING_POSTS });

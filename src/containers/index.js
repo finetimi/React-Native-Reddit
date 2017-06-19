@@ -47,7 +47,7 @@ const homeTabs = TabNavigator({
 		}
 	},
 }, {
-	tabBarComponent: (props)=> <TabBarTop {...props} some={console.log(props)} indicatorStyle={indicatorStyle(props, 'flex-end')} />,
+	tabBarComponent: (props)=> <TabBarTop {...props} indicatorStyle={indicatorStyle(props, 'flex-end')} />,
 	tabBarPosition: 'top', 
 	animationEnabled: true,
 	tabBarOptions: {
