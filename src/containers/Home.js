@@ -10,7 +10,7 @@ export default class Home extends Component {
 		return(
 			<View>
 				<Text>
-				Home Screen
+				Random Screen
 				</Text>
 			</View>
 			)

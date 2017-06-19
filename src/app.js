@@ -5,24 +5,33 @@ import { StackNavigator, TabNavigator } from 'react-navigation';
 import Home from './containers/Home';
 import Feed from './containers/Feed';
 import Login from './containers/Login';
+// import { Icon } from 'react-native-elements';
 
 // Initialize redux store
 const store = configureStore();
 
+// Tabs navigator 
 const Tabs = TabNavigator({
 	Feed: {
-		screen: Feed
+		screen: Feed,
+		navigationOptions:{
+			tabBarLabel: 'Feed',
+		}
 	},
 	Home: {
-		screen: Home
+		screen: Home,
+		navigationOptions:{
+			tabBarLabel: 'Random'
+		}
 	}
 })
-// Application router 
+
+// Main Application Navigtor 
 const Routes = StackNavigator({
 	Login: {screen: Login},
 	Feed: {
-		screen: Tabs
-	}
+		screen: Tabs // return Tabs navigator 
+	},
 
 }, {initialRouteName: 'Login'})
 
