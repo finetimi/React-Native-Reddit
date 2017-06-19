@@ -11,48 +11,41 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Images from '../assets';
+import LoginWebView from './WebView';
 
 const { height, width } = Dimensions.get('window');
-const APP_ID = '327TeSVrOAFLXQ';
-const LOGIN_URI = `https://www.reddit.com/api/v1/authorize.compact?client_id=${APP_ID}&response_type=token&state=iLoveTacosDontYou&redirect_uri=randomurl14://urlaccess&scope=read`;
+export default class Login extends Component{
+	state ={
+		isWebViewOpen: false
+	}
+	openWebView(){
+		this.setState({
+			isWebViewOpen: !this.state.isWebViewOpen
+		})
+	}
+	render(){
+		return(
+			<View style={style.container}>
 
-export const LoginWebView = ()=>(
-	<View style={{width: width, height:0}}>
-	 	<WebView  
-	 		source={{uri: LOGIN_URI}}
-	 		contentInset= {style.webviewInset}
-	 	/>
-	</View>
-	)
-
-export const Login =()=>(
-	<View style={style.container}>
-		<LoginWebView />
-		<Image source={Images.redditChat} style={style.image}  />
-		
-		<TouchableOpacity style={style.button} onPress={()=>LoginWebView()}> 
-			<Text> Sign In </Text>
-		</TouchableOpacity>
-		
-		<TouchableOpacity style={style.button}> 
-			<Text> Sign Up </Text>
-		</TouchableOpacity>
-	</View>
-)
-
+				<Image source={Images.redditChat} style={style.image}  />
+				
+				<TouchableOpacity style={style.button} onPress={()=>this.openWebView()}> 
+					<Text> Sign In </Text>
+				</TouchableOpacity>
+				
+				<TouchableOpacity style={style.button}> 
+					<Text> Sign Up </Text>
+				</TouchableOpacity>
+				{/* Render  Webview */}
+				<LoginWebView isOpen={this.state.isWebViewOpen}/>
+			</View>
+		)
+	}
+}
 const style = StyleSheet.create({
 	container:{
 		backgroundColor: '#fff',
 		flex: 1
-	},
-	webview:{
-		justifyContent: 'flex-end'
-	},
-	webviewInset:{
-		top:5,
-		left:5, 
-		right: 5, 
-		bottom:5
 	},
 	image:{
 		height: 150,

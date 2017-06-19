@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { StackNavigator, TabNavigator } from 'react-navigation';
-import * as actions from '../actions/actions';
+import * as actions from '../actions';
 import * as Icons from '../components/Icons';
 import Home from './Home';
 import Feed from './Feed';

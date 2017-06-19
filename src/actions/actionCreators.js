@@ -1,9 +1,9 @@
 import * as ACTIONS from './constants';
 
 // store autheticated userData in state
-export const authenticateUser = (userData)=>{
+export const authenticateUser = (token)=>{
 	return {
 		type: ACTIONS.LOGIN,
-		userData
+		token
 	}
 }
