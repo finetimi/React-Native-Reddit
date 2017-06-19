@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from '../actions/actions';
 import { StackNavigator, TabNavigator } from 'react-navigation';
+import * as actions from '../actions/actions';
+import * as Icons from '../components/Icons';
 import Home from './Home';
 import Feed from './Feed';
 import Login from './Login';
 import Popular from './Popular';
 import Inbox from './Inbox';
-// import { Icon } from 'react-native-elements';
+import Profile from './Profile';
 
-// Navigator for the Home tab whic
+// Navigator for the Home tab which
 // navigates between Home and Popular
 const homeTabs = TabNavigator({
 	Home: {
@@ -29,7 +30,8 @@ const homeTabs = TabNavigator({
 const Tabs = TabNavigator({
 	Feed: {screen: homeTabs,
 		navigationOptions:{
-			header: null
+			header: null,
+			tabBarIcon: Icons.redditIcon
 		}
 	},
 	Search: {
@@ -37,8 +39,8 @@ const Tabs = TabNavigator({
 	},
 	Inbox: {
 		screen: Inbox,
-
-	}
+	},
+	Profile: {screen: Profile}
 })
 
 // Main Application Navigtor 
