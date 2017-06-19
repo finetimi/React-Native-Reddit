@@ -21,6 +21,8 @@ class Home extends Component {
 	constructor(props){
 		super(props);
 		this.props.ensureAuthentication();
+		// this.props.authUser('randomtoken', 14567898);
+		console.log(this.props)
 	}
 	render(){
 		return (
@@ -32,9 +34,9 @@ class Home extends Component {
 			)
 	}
 }
-const mapStateToProps =(state)=>{
-	return {state: state.auth}
-}
+const mapStateToProps =(state)=>({
+	state: state.AuthReducer
+})
 
 // shortcut for mapping dispatch to props
 export default connect(mapStateToProps, actions)(Home)

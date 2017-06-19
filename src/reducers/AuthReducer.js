@@ -11,7 +11,6 @@ export default function(state=initialState, action){
 	switch(action.type){
 		// Store authenticated user data
 		case ACTIONS.AUTH_USER:
-			console.log(action.token);
 			return Object.assign({}, state, {
 				token: action.token,
 				expires: action.expires,
