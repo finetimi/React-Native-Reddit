@@ -26,7 +26,10 @@ const homeTabs = TabNavigator({
 }, {tabBarPosition: 'top', 
 	animationEnabled: true,
 	tabBarOptions: {
-		activeTintColor: '#20b2aa'
+		activeTintColor: '#20b2aa',
+		labelStyle: {
+			fontSize: 15
+		}
 	} 
 })
 

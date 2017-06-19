@@ -30,12 +30,9 @@ export default class Login extends Component{
 				<Image source={Images.redditChat} style={style.image}  />
 				
 				<TouchableOpacity style={style.button} onPress={()=>this.openWebView()}> 
-					<Text> Sign In </Text>
+					<Text style={style.buttonText}> Sign In </Text>
 				</TouchableOpacity>
 				
-				<TouchableOpacity style={style.button}> 
-					<Text> Sign Up </Text>
-				</TouchableOpacity>
 				{/* Render  Webview */}
 				<LoginWebView isOpen={this.state.isWebViewOpen}/>
 			</View>
@@ -45,18 +42,31 @@ export default class Login extends Component{
 const style = StyleSheet.create({
 	container:{
 		backgroundColor: '#fff',
-		flex: 1
+		flex: 1,
+		alignItems: 'center'
 	},
 	image:{
 		height: 150,
 		width: 150,
 		shadowColor: '#000',
-		shadowOffset: {width:0, height:0},
-		shadowOpacity: 1
+		shadowOffset: {width:0, height:1},
+		shadowOpacity: 0.5,
+		transform: [{rotate: '45deg'}],
+		marginTop: 20+'%'
 	},
 	button: {
 		backgroundColor: '#149EF0',
-		minWidth: width/3,
-		minHeight: 20
+		minWidth: width/2,
+		height: 40,
+		justifyContent: 'center',
+		alignItems: 'center',
+		borderRadius: 5,
+		shadowOpacity: 0.4,
+		shadowOffset: {width:0 , height:0},
+		shadowRadius: 3,
+	},
+	buttonText:{
+		color: '#fff',
+		fontWeight: 'bold'
 	}
 })
