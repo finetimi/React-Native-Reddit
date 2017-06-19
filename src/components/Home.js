@@ -20,7 +20,7 @@ export default (props)=>(
 			<Image source={Images.hawks} style={style.image} />
 			<Image source={Images.banned} style={[style.banned]} />
 				
-			<TouchableOpacity style={style.button} onPress={()=>this.openWebView()}> 
+			<TouchableOpacity style={style.button} onPress={()=>props.openWebView(true)}> 
 				<Text style={style.buttonText}> Sign In </Text>
 			</TouchableOpacity>
 			<TouchableOpacity style={[style.button, {marginTop:15, backgroundColor:'#FF4300'}]} onPress={()=>this.openWebView()}> 

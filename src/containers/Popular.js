@@ -4,16 +4,31 @@ import {
 	Text,
 	TouchableHighlight,
 } from 'react-native';
+import { connect } from 'react-redux';
+import AXIOS from '../actions/constants';
 
-export default class Home extends Component {
+class Popular extends Component {
+	componentWillUpdate(nexProps){
+		if (nexProps.state.token !== this.props.state.token){
+			// AXIOS(this.props.state.token)
+			// .get('/hot')
+			// .then(console.log)
+			// .catch(err=>console.error(err.response))
+		}
+		// console.log(this.props)
+		
+	}
 	render(){
 		return(
 			<View>
 				<Text>
-				{this.props.toString()}
-				Popular Screen
+
 				</Text>
 			</View>
 			)
 	}
 }
+const mapStateToProps =(state)=>({
+	state: state.AuthReducer
+})
+export default connect(mapStateToProps, null)(Popular);

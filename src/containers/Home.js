@@ -18,20 +18,30 @@ const { height, width } = Dimensions.get('window');
 
 
 class Home extends Component {
+	state = {
+		openWebView: false
+	};
 	constructor(props){
 		super(props);
 		this.props.ensureAuthentication();
 	}
-	componentDidUpdate(){
-		console.log(this.props);
+	
+	openWebView(bool){
+		this.setState({
+			openWebView: bool
+		});
 	}
 	render(){
 		return (
 			<View style={{flex:1}}>
-				<Login />
-				<LoginWebView {...this.props}/>
+				<Login openWebView ={this.openWebView.bind(this)} />
+				{ this.state.openWebView ? 
+					<LoginWebView 
+						{...this.props}
+						openWebView={this.openWebView.bind(this)} 
+						/> : null 
+				}	
 			</View>
-
 			)
 	}
 }

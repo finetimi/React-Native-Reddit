@@ -12,8 +12,10 @@ export const FETCHING_USER_DATA = 'FETCHING_USER_DATA';
 
 // Thunk to return axios config
 export const AXIOS 	= (token)=> {
-	return axios.create({
+	const done = axios.create({
 		baseURL: 'https://oath.reditt.com',
 		headers: {'Authorization': `bearer ${token}`}
 	});
+	console.log(done);
+	return done
 }

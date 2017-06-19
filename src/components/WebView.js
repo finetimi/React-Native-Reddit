@@ -22,22 +22,24 @@ export default class LoginWebView extends Component{
 	
 	constructor(){
 		super();
-		this.animatedValue = new Animated.Value(0);
+		this.animatedValue = new Animated.Value(defaultHeight);
 		this.state = {
 			height: defaultHeight
 		}
 	}
 	componentDidMount(){
 		this.animateOpen();
+		console.log('opened')
 	}
-	componentDidUpdate(){
+	componentWillUnmount(){
+		this.animateClose();
 	}
 	animateOpen(){
 		Animated.timing(
 			this.animatedValue, 
 			{
 				toValue:0,
-				duration: 3000,
+				duration: 300,
 				easing: Easing.linear
 			}
 		).start();
@@ -47,14 +49,14 @@ export default class LoginWebView extends Component{
 			this.animatedValue,
 			{
 				toValue: height,
-				duration: 4000,
+				duration: 300,
 				easing: Easing.linear
 			}
-		).start();
+		).start(()=>this.props.openWebView(false));
 	}
 	navigateStateChanged(currentState){
 		if (currentState.url.startsWith("rnreddit://")){
-			// this.animateClose();
+			this.animateClose();
 			const url 	  = qs.parse(currentState.url);
 			const token   = url['rnreddit://redirecturi#access_token'];
 			const expires = url['expires_in'];
@@ -71,11 +73,12 @@ export default class LoginWebView extends Component{
 
 		return(
 			<View style={style.container}>
-				<TouchableWithoutFeedback>
+				<TouchableWithoutFeedback onPress={()=>this.animateClose()}>
 					<Animated.View style={style.backDrop} />
 				</TouchableWithoutFeedback>
 				<Animated.View 
 						style={[style.modal, 
+							{transform:[{translateY: this.animatedValue}]}
 						]}>
 					 	<WebView 
 					 		source={{uri: LOGIN_URI}}
@@ -100,9 +103,8 @@ const style = StyleSheet.create({
 	},
 	modal:{
 		...StyleSheet.absoluteFillObject,
-		height: height/2,
 		backgroundColor: '#fff',
-		// top: height - height/2
+		top: height - (height * 0.90)
 	},
 	webviewInset:{
 		top:5,

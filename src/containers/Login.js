@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { SignIn, SignUp } from '../components/Auth.js'
+// import { SignIn, SignUp } from '../components/Auth.js'
 import {
 	View,
 	Text,
