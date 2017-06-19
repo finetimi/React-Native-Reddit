@@ -13,7 +13,7 @@ export default function(state=initialState, action){
 		case ACTIONS.LOGIN_USER:
 			return Object.assign({}, state, {
 				userData: action.userData
-			});
+			});            
 
 		default:
 			return state;
