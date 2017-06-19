@@ -4,7 +4,7 @@ Reducers accept two arguments, the current state and the action
 dispatched.  
 */
 import * as ACTIONS from '../actions/constants';
-const initialState ={};
+const initialState ={token: null, expires:null, isTokenExpired: null};
 
 export default function(state=initialState, action){
 

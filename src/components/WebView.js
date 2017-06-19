@@ -29,8 +29,9 @@ export default class LoginWebView extends Component{
 	}
 	componentDidMount(){
 		this.animateOpen();
-		this.props.authUser(APP_ID);
-
+	}
+	componentDidUpdate(){
+		console.log(this.props)
 	}
 	animateOpen(){
 		Animated.timing(
