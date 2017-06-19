@@ -9,7 +9,7 @@ import Feed from './Feed';
 import Login from './Login';
 import Popular from './Popular';
 import Inbox from './Inbox';
-import Profile from './Profile';
+import Account from './Account';
 
 // Navigator for the Home tab which
 // navigates between Home and Popular
@@ -18,8 +18,7 @@ const homeTabs = TabNavigator({
 		screen: Home,
 		navigationOptions:{
 			tabBarLabel: 'Home',
-			animationEnabled: true,
-		}
+		},
 	},
 	Popular:{
 		screen: Popular,
@@ -31,23 +30,34 @@ const Tabs = TabNavigator({
 	Feed: {screen: homeTabs,
 		navigationOptions:{
 			header: null,
-			tabBarIcon: Icons.redditIcon
+			tabBarIcon: Icons.reddit,
 		}
 	},
 	Search: {
-		screen: Feed
+		screen: Feed,
+		navigationOptions:{
+			tabBarIcon: Icons.search
+		}
 	},
 	Inbox: {
 		screen: Inbox,
+		navigationOptions:{
+			tabBarIcon: Icons.mail
+		}
 	},
-	Profile: {screen: Profile}
+	Account: {screen: Account,
+		navigationOptions:{
+			tabBarIcon: Icons.user
+		}
+	}
+}, {tabBarOptions:{showLabel: false, activeTintColor: '#20b2aa'}
 })
 
 // Main Application Navigtor 
 const Routes = StackNavigator({
 	Login: {screen: Login},
 	Home:  {screen: Tabs }
-},{initialRouteName: 'Login'})
+},{initialRouteName: 'Home'})
 
 
 export default connect(null, actions)(Routes);
