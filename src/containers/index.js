@@ -23,7 +23,12 @@ const homeTabs = TabNavigator({
 	Popular:{
 		screen: Popular,
 	},
-}, {tabBarPosition: 'top', animationEnabled: true})
+}, {tabBarPosition: 'top', 
+	animationEnabled: true,
+	tabBarOptions: {
+		activeTintColor: '#20b2aa'
+	} 
+})
 
 // Global tabs navigator which appears
 const Tabs = TabNavigator({
