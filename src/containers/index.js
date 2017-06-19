@@ -18,7 +18,7 @@ const homeTabs = TabNavigator({
 		screen: Home,
 		navigationOptions:{
 			tabBarLabel: 'HOME',
-		}
+		},
 	},
 	Popular:{
 		screen: Popular,
@@ -32,11 +32,15 @@ const homeTabs = TabNavigator({
 	tabBarOptions: {
 		activeTintColor: '#20b2aa',
 		labelStyle: {fontSize: 15, fontWeight: '600'},
+		style: {
+			backgroundColor: '#fff',
+		},
 		tabStyle: {
-			backgroundColor: 'blue'
-		}
+				borderBottomWidth: 2,
+				borderBottomColor: '#000'
+			}
 	} 
-})
+});
 
 // Global tabs navigator which appears
 const Tabs = TabNavigator({
@@ -64,7 +68,7 @@ const Tabs = TabNavigator({
 		}
 	}
 }, {tabBarOptions:{showLabel: false, activeTintColor: '#20b2aa'}
-})
+});
 
 // Main Application Navigtor 
 const Routes = StackNavigator({
