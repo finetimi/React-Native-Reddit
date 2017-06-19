@@ -17,18 +17,23 @@ const homeTabs = TabNavigator({
 	Home: {
 		screen: Home,
 		navigationOptions:{
-			tabBarLabel: 'Home',
-		},
+			tabBarLabel: 'HOME',
+		}
 	},
 	Popular:{
 		screen: Popular,
+		navigationOptions:{
+			tabBarLabel: 'POPULAR'
+		}
 	},
-}, {tabBarPosition: 'top', 
+}, {
+	tabBarPosition: 'top', 
 	animationEnabled: true,
 	tabBarOptions: {
 		activeTintColor: '#20b2aa',
-		labelStyle: {
-			fontSize: 15
+		labelStyle: {fontSize: 15, fontWeight: '600'},
+		tabStyle: {
+			backgroundColor: 'blue'
 		}
 	} 
 })

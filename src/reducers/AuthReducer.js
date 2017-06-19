@@ -10,9 +10,12 @@ export default function(state=initialState, action){
 
 	switch(action.type){
 		// Store authenticated user data
-		case ACTIONS.LOGIN_USER:
+		case ACTIONS.AUTH_USER:
+			console.log(action.token);
 			return Object.assign({}, state, {
-				userData: action.userData
+				token: action.token,
+				expires: action.expires,
+				isTokenExpired: ()=>Date.now() > state.expires,
 			});            
 
 		default:

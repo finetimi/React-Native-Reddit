@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as actions from '../actions';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import {
 	View,
 	Text,
@@ -10,19 +11,30 @@ import {
 	StyleSheet,
 	Dimensions,
 } from 'react-native';
+import Login from '../components/Home';
+import LoginWebView from '../components/WebView';
+
 const { height, width } = Dimensions.get('window');
 
-import Icon from 'react-native-vector-icons/FontAwesome';
-import Images from '../assets';
-import Login from '../components/Home';
 
 class Home extends Component {
+	constructor(props){
+		super(props);
+		this.props.ensureAuthentication();
+	}
 	render(){
-		console.log(this.props)
 		return (
-			<Login  />
+			<View style={{flex:1}}>
+				<Login />
+				<LoginWebView {...this.props}/>
+			</View>
+
 			)
 	}
 }
+const mapStateToProps =(state)=>{
+	return {state: state.auth}
+}
+
 // shortcut for mapping dispatch to props
-export default connect(null, actions)(Home)
+export default connect(mapStateToProps, actions)(Home)

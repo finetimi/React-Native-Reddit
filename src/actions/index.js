@@ -5,8 +5,7 @@ export * from './actionCreators';
 
 const TOKEN_KEY = '@ReactNativeReddit:token';
 
-
-export const saveToken = async(token)=>{
+const saveToken = async(token)=>{
 	try {
 		await AsyncStorage.setItem(TOKEN_KEY, token)
 	} catch (error){
@@ -15,6 +14,14 @@ export const saveToken = async(token)=>{
 }
 
 export const authUser = (token)=>{
-	saveToken(token);
-	dispatch(actionCreators.authenticateUser(token));
+	// Save token to AsyncStorage then save to redux state
+	return (dispatch) =>{
+		saveToken(token)
+			.then(dispatch(actionCreators.authenticateUser(token)))
+			.catch(err=>console.error(err));
+	}
+}
+
+export const ensureAuthentication =()=>{
+	
 }

@@ -15,8 +15,6 @@ export default class Login extends Component {
 	render(){
 		return(
 			<View style={style.container}>
-				<TextInput style = {style.input} placeholder="Username"/>
-				<TextInput style = {style.input} placeholder="password"/>
 				<TouchableHighlight 
 					onPress={()=>this.props.navigation.navigate('Feed')}
 					style={[style.buttonContainer]}>

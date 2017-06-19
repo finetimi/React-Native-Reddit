@@ -7,17 +7,16 @@ import {
 	Image,
 	StyleSheet,
 	Dimensions,
-	Animated
+	Animated,
+	Easing
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Images from '../assets';
+import { APP_ID, LOGIN_URI } from '../actions/constants';
 import qs from 'qs';
 
 const { height, width } = Dimensions.get('window');
-const APP_ID = '327TeSVrOAFLXQ';
-const LOGIN_URI = `https://www.reddit.com/api/v1/authorize.compact?client_id=${APP_ID}&response_type=token&state=RANDOM_STRING&redirect_uri=rnreddit://redirectURI&scope=read`;
 const defaultHeight = height/2;
-// "rnreddit://redirecturi#access_token=UTe9Omj6QnjL83X6tN0UTLnsX-s&token_type=bearer&state=RANDOM_STRING&expires_in=3600&scope=read"
 
 export default class LoginWebView extends Component{
 	
@@ -28,20 +27,18 @@ export default class LoginWebView extends Component{
 			height: defaultHeight
 		}
 	}
-	componentWillReceiveProps(nextProps){
-		if (!this.props.isOpen && nextProps.isOpen){
-			this.animateOpen();
-		}
-		else if (this.props.isOpen && !nextProps.isOpen){
-			this.animateClose();
-		}
+	componentDidMount(){
+		this.animateOpen();
+		this.props.authUser(APP_ID);
+
 	}
 	animateOpen(){
 		Animated.timing(
 			this.animatedValue, 
 			{
 				toValue:0,
-				duration: 1000
+				duration: 3000,
+				easing: Easing.linear
 			}
 		).start();
 	}
@@ -50,43 +47,61 @@ export default class LoginWebView extends Component{
 			this.animatedValue,
 			{
 				toValue: height,
-				duration: 4000
+				duration: 4000,
+				easing: Easing.linear
 			}
 		).start();
 	}
 	navigateStateChanged(currentState){
 		if (currentState.url.startsWith("rnreddit://")){
 			this.authUrl = currentState.url;
-			this.animateClose();
-			const url = qs.parse(this.authUrl);
-			const token = url['rnreddit://redirecturi#access_token'];
+			// this.animateClose();
+			const url 	  = qs.parse(this.authUrl);
+			const token   = url['rnreddit://redirecturi#access_token'];
+			const expires = url['expires_in'];
+			console.log(token, expires)
+			
+			// Store token in asyncstorage and state
+			this.props.authUser(token, expires);
 		}
 	}
 	
 	render(){
-		if (!this.props.isOpen){
-			return null
-		}
-		return (
-				<TouchableWithoutFeedback style={{flex:1, backgroundColor:'#000', opacity:0.5, height:height}}>
-					<Animated.View 
-						style={[style.container, {height:this.state.height, transform:[{translateY:this.animatedValue}]}
-						]}>
-					 	<WebView  
-					 		source={{uri: LOGIN_URI}}
-					 		onNavigationStateChange ={this.navigateStateChanged}
-					 		contentInset={{top:5, left:5, bottom:10, right:10}}
-					 	/>
-					</Animated.View>
+
+		return(
+			<View style={style.container}>
+				<TouchableWithoutFeedback>
+					<Animated.View style={style.backDrop} />
 				</TouchableWithoutFeedback>
+				<Animated.View 
+						style={[style.modal, 
+						]}>
+					 	<WebView 
+					 		source={{uri: LOGIN_URI}}
+					 		onNavigationStateChange ={this.navigateStateChanged.bind(this)}/>
+				</Animated.View>
+			</View> 
 		)
 	}
 }
 
 const style = StyleSheet.create({
 	container:{
+		...StyleSheet.absoluteFillObject,
+		backgroundColor: 'transparent',
 		justifyContent: 'flex-end',
-		width: width,
+		flex: 1
+	},
+	backDrop:{
+		...StyleSheet.absoluteFillObject,
+		backgroundColor: '#000',
+		opacity: 0.5,
+	},
+	modal:{
+		...StyleSheet.absoluteFillObject,
+		height: height/2,
+		backgroundColor: '#fff',
+		// top: height - height/2
 	},
 	webviewInset:{
 		top:5,
