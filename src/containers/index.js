@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { StackNavigator, TabNavigator } from 'react-navigation';
+import { Text } from 'react-native';
+import { StackNavigator, TabNavigator, TabBarTop } from 'react-navigation';
 import * as actions from '../actions';
 import * as Icons from '../components/Icons';
 import Home from './Home';
@@ -11,34 +12,40 @@ import Popular from './Popular';
 import Inbox from './Inbox';
 import Account from './Account';
 
+// tabBarLabel style for Top navigation Bar
+const labelStyle =(props, alignSelf)=> ({
+	fontSize: 13,
+	fontWeight: '600',
+	marginHorizontal: 15,
+	marginTop: 30,
+	color: props.focused ? props.tintColor : "#929292",
+	alignSelf
+});
+
 // Navigator for the Home tab which
 // navigates between Home and Popular
 const homeTabs = TabNavigator({
 	Home: {
 		screen: Home,
 		navigationOptions:{
-			tabBarLabel: 'HOME',
+			tabBarLabel: (props)=>(<Text style={labelStyle(props, 'flex-end')}> HOME </Text>)
 		},
 	},
 	Popular:{
 		screen: Popular,
 		navigationOptions:{
-			tabBarLabel: 'POPULAR'
+			tabBarLabel: (props)=>(<Text style={labelStyle(props, 'flex-start')}> POPULAR </Text>)
 		}
 	},
 }, {
+	tabBarComponent: (props)=> <TabBarTop  {...props} pr={console.log(props)}/>,
 	tabBarPosition: 'top', 
 	animationEnabled: true,
 	tabBarOptions: {
 		activeTintColor: '#20b2aa',
-		labelStyle: {fontSize: 15, fontWeight: '600'},
 		style: {
 			backgroundColor: '#fff',
 		},
-		tabStyle: {
-				borderBottomWidth: 2,
-				borderBottomColor: '#000'
-			}
 	} 
 });
 

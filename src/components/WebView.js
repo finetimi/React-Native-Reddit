@@ -29,7 +29,7 @@ export default class LoginWebView extends Component{
 	}
 	componentDidMount(){
 		this.animateOpen();
-		console.log('opened')
+		console.log('opened');
 	}
 	componentWillUnmount(){
 		this.animateClose();
