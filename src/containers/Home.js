@@ -21,8 +21,9 @@ class Home extends Component {
 	constructor(props){
 		super(props);
 		this.props.ensureAuthentication();
-		// this.props.authUser('randomtoken', 14567898);
-		console.log(this.props)
+	}
+	componentDidUpdate(){
+		console.log(this.props);
 	}
 	render(){
 		return (

@@ -31,7 +31,6 @@ export default class LoginWebView extends Component{
 		this.animateOpen();
 	}
 	componentDidUpdate(){
-		console.log(this.props)
 	}
 	animateOpen(){
 		Animated.timing(
@@ -55,15 +54,16 @@ export default class LoginWebView extends Component{
 	}
 	navigateStateChanged(currentState){
 		if (currentState.url.startsWith("rnreddit://")){
-			this.authUrl = currentState.url;
 			// this.animateClose();
-			const url 	  = qs.parse(this.authUrl);
+			const url 	  = qs.parse(currentState.url);
 			const token   = url['rnreddit://redirecturi#access_token'];
 			const expires = url['expires_in'];
-			console.log(token, expires)
+			const expireTime = Date.now() + parseInt(expires * 1000); // convert expire time to millisecods 
+
+			console.log(token, expireTime)
 			
 			// Store token in asyncstorage and state
-			this.props.authUser(token, expires);
+			this.props.authUser(token, expireTime);
 		}
 	}
 	

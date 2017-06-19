@@ -14,7 +14,6 @@ export default function(state=initialState, action){
 			return Object.assign({}, state, {
 				token: action.token,
 				expires: action.expires,
-				isTokenExpired: ()=>Date.now() > state.expires,
 			});            
 
 		default:
