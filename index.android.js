@@ -11,6 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
+import App from './src/app';
 
 export default class RedditClient extends Component {
   render() {
@@ -50,4 +51,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('RedditClient', () => RedditClient);
+AppRegistry.registerComponent('RedditClient', () => App);
