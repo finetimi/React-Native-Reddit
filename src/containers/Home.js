@@ -10,7 +10,7 @@ export default class Home extends Component {
 		return(
 			<View>
 				<Text>
-				Say something
+				Home Screen
 				</Text>
 			</View>
 			)
