@@ -69,6 +69,6 @@ export const fetchFeed = (token)=>{
 				const posts = data.map(post=>post.data); // Actual data needed
 				dispatch(actionCreators.savePosts(posts));
 			})
-			.catch(error=>console.error(error.response))
+			.catch(error=>console.error(error))
 		}
 }

@@ -14,31 +14,40 @@ const {width, height } = Dimensions.get('window');
 
 export default class List extends Component {
 	render(){
+		const { 
+			subreddit,
+			domain,
+			posted,
+			title,
+			image,
+			votes,
+			comments,
+		} = this.props;
+		console.log(image)
 		return(
 			<Card containerStyle={style.card}>
-					<View style = {style.cardHeader}>
-						<Image source={Images.redditImage} style={style.thumbnail} />
-						<View style={style.cardHeaderView}>
-							<Text style={[style.cardHeaderText, {fontWeight: '600'}]}> r/photoshopbattles  </Text>
-							<Text style={style.cardHeaderText}> 9h · imgur </Text>							
-						</View>
-						<View style={style.cardHeaderThreeDots}>
-							<Text>{Icons.threeDots} </Text>
-						</View>					
+				<View style = {style.cardHeader}>
+					<Image source={Images.redditImage} style={style.thumbnail} />
+					<View style={style.cardHeaderView}>
+						<Text style={[style.cardHeaderText, {fontWeight: '600'}]}> {subreddit} </Text>
+						<Text style={style.cardHeaderText}> {posted} · {domain} </Text>							
 					</View>
-					<View style={style.imageContainer}>
-						<Text style={style.title}>
-							 Aid worker pulls this little girl out of the 
-							 kill zone. She was crawling among bodies of other 
-							 civilians.
-						</Text>
-						<Image style={style.image} source={Images.hawks} />
-						<View style={style.actions}>
-							<Text style={style.actionsText}>{Icons.arrowUp } {' '} 29.7k {' '} {Icons.arrowDown} </Text>
-							<Text style={style.actionsText}>{Icons.comment} 755 </Text>
-							<Text style={style.actionsText}>{Icons.share} Share </Text>
-						</View>
-					</View>		
+					<View style={style.cardHeaderThreeDots}>
+						<Text>{Icons.threeDots} </Text>
+					</View>					
+				</View>
+				<View style={style.imageContainer}>
+					<Text style={style.title}>
+						{title}
+					</Text>
+					{/* If image exists render image else display nothing */}
+					{image ? <Image style={style.image} source={{uri:image}} /> : null}
+					<View style={style.actions}>
+						<Text style={style.actionsText}>{Icons.arrowUp } {' '} {votes} {' '} {Icons.arrowDown} </Text>
+						<Text style={style.actionsText}>{Icons.comment} {comments} </Text>
+						<Text style={style.actionsText}>{Icons.share} Share </Text>
+					</View>
+				</View>		
 			</Card>
 			)
 	}
@@ -73,7 +82,8 @@ const style = StyleSheet.create({
 	},
 	image:{
 		height: 150,
-		width: null
+		width: null,
+		marginHorizontal: -5+'%'
 	},
 	title:{
 		marginVertical: 5,

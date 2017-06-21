@@ -8,6 +8,7 @@ export default function(state=initialState, action){
 			return {...state, isLoading: true}
 
 		case ACTIONTYPE.STORE_POSTS:
+			console.log(action.posts);
 			return Object.assign({}, state, {
 				isLoading: false,
 				hotPosts: action.posts
