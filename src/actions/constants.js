@@ -1,4 +1,4 @@
-/* constatns that can be used anywhere in the app,
+/* constants that can be used anywhere in the app,
 all put under one section to prevent collision */
 
 // API constants

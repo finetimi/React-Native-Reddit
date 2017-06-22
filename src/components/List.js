@@ -23,7 +23,6 @@ export default class List extends Component {
 			votes,
 			comments,
 		} = this.props;
-		console.log(image)
 		return(
 			<Card containerStyle={style.card}>
 				<View style = {style.cardHeader}>

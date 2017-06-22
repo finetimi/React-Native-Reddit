@@ -40,11 +40,9 @@ export const ensureAuthentication = ()=>{
 		const isExpired = Date.now() > expires;
 		// Check if EXPIRES_KEY exists and if token is expired
 		if (!expires || isExpired){
-			console.log('deleting state')
 			return logoutUser();
 		}
 		const token = await retrieveFromStorage(TOKEN_KEY);
-		console.log(token, expires );
 		dispatch(actionCreators.authenticateUser(token, expires));
 	};
 };
@@ -54,14 +52,13 @@ export const isTokenExpired = ()=>{
 		const { expires } = getState();
 		return Date.now() > expires ? true : false;
 	}
-}
+};
 
 export const fetchFeed = (token)=>{
 	const config = {
 		baseURL: 'https://oauth.reddit.com',
 		headers: {'Authorization': `bearer ${token}`}
-	}
-	console.log(token)
+	};
 	return (dispatch)=>{
 		axios.get('/hot', config)
 			.then(response=>{
@@ -71,4 +68,4 @@ export const fetchFeed = (token)=>{
 			})
 			.catch(error=>console.error(error))
 		}
-}
+};

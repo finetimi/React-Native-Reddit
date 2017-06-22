@@ -7,7 +7,7 @@ import { StackNavigator, TabNavigator, TabBarTop } from 'react-navigation';
 import * as actions from '../actions';
 import * as Icons from '../components/Icons';
 import Home from './Home';
-import Feed from './Feed';
+import Search from './Search';
 import Login from './Login';
 import Popular from './Popular';
 import Inbox from './Inbox';
@@ -25,7 +25,6 @@ const labelStyle =(props, alignSelf)=> ({
 // IndicatorStyle is an absolute Positoned View
 const indicatorStyle = (props, alignSelf) => ({
 	backgroundColor: props.activeTintColor,
-	marginHorizontal: 15,
 	alignSelf: 'flex-end',
 	// width: 120,
 	// left: 30,
@@ -67,7 +66,7 @@ const Tabs = TabNavigator({
 		}
 	},
 	Search: {
-		screen: Feed,
+		screen: Search,
 		navigationOptions:{
 			tabBarIcon: Icons.search
 		}

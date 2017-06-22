@@ -7,7 +7,7 @@ export const reddit = ({tintColor, focused})=>(
 		<FAIcon name="reddit" size={30} style={{color: focused ? '#FF4300': tintColor}}/>
 	);
 export const search = ({tintColor, focused})=>(
-		<FAIcon name="search" size={30} style={{color: tintColor, transform:[{rotate: '360deg'}] }}/>
+		<FAIcon name="search" size={30} style={{color: tintColor, transform:[{rotate: '90deg'}] }}/>
 	);
 export const mail =	({tintColor, focused}) =>(
 		<EntypoIcon name="mail" size={30} style={{color: tintColor}} />
