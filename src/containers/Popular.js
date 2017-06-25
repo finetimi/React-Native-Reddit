@@ -17,6 +17,7 @@ class Popular extends Component {
 		// If token changes refresh feed with new token
 		if (nextProps.state.token && 
 			nextProps.state.token !== this.props.state.token){
+				console.log('new token', nextProps.state.token)
 				this.props.fetchFeed(nextProps.state.token);
 		}
 	}
@@ -43,7 +44,6 @@ class Popular extends Component {
 				<SortButton /> 
 				<NewPost />
 				{hotPosts && hotPosts.map((post, index)=>{
-					console.log(post.preview)
 					return <List 
 						key		  = {index}
 						subreddit = {post.subreddit_name_prefixed}
@@ -61,7 +61,7 @@ class Popular extends Component {
 	}
 }
 const mapStateToProps =(state)=>({
-	state:{ ...state.AuthReducer, ...state.PostReducer}
+	state:{ ...state.AuthReducer, ...state.UserReducer}
 
 })
 export default connect(mapStateToProps, actions)(Popular);

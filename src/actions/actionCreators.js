@@ -17,3 +17,10 @@ export const savePosts = (posts)=>{
 };
 
 export const isLoading = ()=>({type: ACTIONTYPE.LOADING_POSTS });
+
+export const saveSubreddits =(subreddits)=>{
+	return {
+		type: ACTIONTYPE.STORE_SUBREDDITS,
+		subreddits
+	}
+}

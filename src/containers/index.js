@@ -6,6 +6,7 @@ import { Text } from 'react-native';
 import { StackNavigator, TabNavigator, TabBarTop } from 'react-navigation';
 import * as actions from '../actions';
 import * as Icons from '../components/Icons';
+import { SearchReddit } from '../components/Misc';
 import Home from './Home';
 import Search from './Search';
 import Login from './Login';
@@ -22,7 +23,8 @@ const labelStyle =(props, alignSelf)=> ({
 	color: props.focused ? props.tintColor : "#929292",
 	alignSelf
 });
-// IndicatorStyle is an absolute Positoned View
+
+// IndicatorStyle is an absolute positioned View
 const indicatorStyle = (props, alignSelf) => ({
 	backgroundColor: props.activeTintColor,
 	alignSelf: 'flex-end',
@@ -68,7 +70,8 @@ const Tabs = TabNavigator({
 	Search: {
 		screen: Search,
 		navigationOptions:{
-			tabBarIcon: Icons.search
+			tabBarIcon: Icons.search,
+			header: <SearchReddit />
 		}
 	},
 	Inbox: {
@@ -82,7 +85,8 @@ const Tabs = TabNavigator({
 			tabBarIcon: Icons.user
 		}
 	}
-}, {tabBarOptions:{showLabel: false, activeTintColor: '#20b2aa'}
+}, {
+	tabBarOptions:{showLabel: false, activeTintColor: '#20b2aa', backgroundColor:'#fff'},
 });
 
 // Main Application Navigtor 

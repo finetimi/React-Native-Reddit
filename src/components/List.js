@@ -35,7 +35,7 @@ export default class List extends Component {
 						<Text>{Icons.threeDots} </Text>
 					</View>					
 				</View>
-				<View style={style.imageContainer}>
+				<View style={{flex:1}}>
 					<Text style={style.title}>
 						{title}
 					</Text>
@@ -58,6 +58,7 @@ const style = StyleSheet.create({
 		marginHorizontal: 0,
 		borderColor: '#fff',
 		paddingVertical: 5,
+		flex: 1
 	},
 	cardHeader:{
 		borderBottomWidth: StyleSheet.hairlineWidth,
@@ -80,7 +81,9 @@ const style = StyleSheet.create({
 		marginTop: 12,
 	},
 	image:{
-		height: 150,
+		flex: 1,
+		resizeMode: 'cover',
+		height: 300,
 		width: null,
 		marginHorizontal: -5+'%'
 	},

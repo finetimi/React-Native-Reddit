@@ -1,6 +1,9 @@
 import * as ACTIONTYPE from '../actions/constants';
 
-const initialState = {hotPosts:[]};
+const initialState = {
+	hotPosts: null,
+	subreddits: null
+};
 
 export default function(state=initialState, action){
 	switch (action.type){
@@ -8,10 +11,15 @@ export default function(state=initialState, action){
 			return {...state, isLoading: true}
 
 		case ACTIONTYPE.STORE_POSTS:
-			console.log(action.posts);
 			return Object.assign({}, state, {
 				isLoading: false,
 				hotPosts: action.posts
+			});
+
+		case ACTIONTYPE.STORE_SUBREDDITS:
+			return Object.assign({}, state, {
+				subreddits: action.subreddits,
+				isLoading: false
 			});
 		default:
 			return state

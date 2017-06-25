@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'react-native-elements';
+import { Card, SearchBar } from 'react-native-elements';
 import * as Icons from './Icons';
 import { 
 	View,
@@ -30,6 +30,13 @@ export const SortButton = () =>(
 	 </TouchableWithoutFeedback>
 	 );
 
+export const SearchReddit =()=>(
+		<SearchBar 
+			lightTheme
+			inputStyle={style.searchInput}
+			containerStyle={style.searchContainer} 
+			placeholder='Find a community or post' />
+	);
 
 const style = StyleSheet.create({
 	container:{
@@ -55,5 +62,13 @@ const style = StyleSheet.create({
 		fontWeight: '500',
 		color: 'grey',
 		marginTop: 5
+	},
+	searchContainer:{
+		backgroundColor: '#fff',
+		marginTop:30
+	},
+	searchInput:{
+		backgroundColor: '#ccc',
+		alignContent: 'center'
 	}
 })

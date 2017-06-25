@@ -2,7 +2,6 @@ import * as ACTIONS from './constants';
 import * as actionCreators from './actionCreators';
 import { AsyncStorage } from 'react-native';
 export * from './actionCreators';
-import axios from 'axios';
 
 const TOKEN_KEY   = '@ReactNativeReddit:token';
 const EXPIRES_KEY = '@ReactNativeReddit:expires';
@@ -55,17 +54,30 @@ export const isTokenExpired = ()=>{
 };
 
 export const fetchFeed = (token)=>{
-	const config = {
-		baseURL: 'https://oauth.reddit.com',
-		headers: {'Authorization': `bearer ${token}`}
-	};
+	const axios = new ACTIONS.Axios(token);
 	return (dispatch)=>{
-		axios.get('/hot', config)
+		axios.get('/hot')
 			.then(response=>{
-				const data = response.data.data.children; // Array of objects with post and kind
-				const posts = data.map(post=>post.data); // Actual data needed
+				const { children } = response.data.data; // Array of objects with post and kind
+				const posts = children.map(post=>post.data);  // Actual data needed
 				dispatch(actionCreators.savePosts(posts));
 			})
-			.catch(error=>console.error(error))
+			.catch(error=>console.error(error.response))
 		}
 };
+export const fetchSubreddits = (token) =>{
+	const axios = new ACTIONS.Axios(token);
+
+	return (dispatch)=>{
+		axios.get('/subreddits/mine/subscriber')
+			.then(response=>{
+				const { children } = response.data.data;
+				const subreddits = children.map(subreddit=>subreddit.data);
+				// sort subreddits alphabetically and store in state
+				subreddits.sort((a,b)=>a.display_name.toLowerCase() < b.display_name.toLowerCase() ? -1 : 1);
+				console.log(subreddits);
+				dispatch(actionCreators.saveSubreddits(subreddits));
+			})
+			.catch(error=>console.error(error.response))
+		};
+}
