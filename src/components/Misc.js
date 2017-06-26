@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, SearchBar } from 'react-native-elements';
+import { Card, SearchBar, colors } from 'react-native-elements';
 import * as Icons from './Icons';
 import { 
 	View,
@@ -69,6 +69,8 @@ const style = StyleSheet.create({
 	},
 	searchInput:{
 		backgroundColor: '#ccc',
-		alignContent: 'center'
+		justifyContent: 'center',
+		alignContent: 'center',
+		opacity: 0.5
 	}
 })

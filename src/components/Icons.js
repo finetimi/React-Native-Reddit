@@ -3,7 +3,7 @@ import FAIcon from 'react-native-vector-icons/FontAwesome';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import MAIcons from 'react-native-vector-icons/MaterialIcons';
 import SLIcons from 'react-native-vector-icons/SimpleLineIcons';
-import { View } from 'react-native';
+import { Image, Text } from 'react-native';
 export const reddit = ({tintColor, focused})=>(
 		<FAIcon name="reddit" size={30} style={{color: focused ? '#FF4300': tintColor}}/>
 	);
@@ -26,6 +26,7 @@ export const oneDot		= <EntypoIcon 	name="dot-single" color="#ccc" size={10} />
 export const pencil 	= <FAIcon 		name="pencil-square" color="#13b89f" size={30} />
 export const hot 		= <MAIcons 		name="whatshot" color="#ccc" size={20} />
 export const caret 		= <FAIcon 		name="caret-down" size={10} />
-export const explore 	= <FAIcon 		name="wpexplorer" size={30} color="#000" style={{ transform:[{rotateY: '180 deg'}] }}/>
-export const popular  	= <MAIcons 		name="trending-up" size={30} color="#000" />
-export const all = ()=> <SLIcons name="chart" size={30} color="#000" /> 
+export const star 		= <EntypoIcon	name="star" size = {20} color="#ccc" style={{marginRight: 25}} />
+export let explore 		= FAIcon.getImageSource('wpexplorer', 30, '#fff').then(source=> explore = source);
+export let all			= EntypoIcon.getImageSource('bar-graph', 20, '#fff').then(source=> all = source); 
+export let popular		= MAIcons.getImageSource('trending-up', 30, '#fff').then(source=> popular = source);

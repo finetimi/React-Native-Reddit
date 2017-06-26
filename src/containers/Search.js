@@ -23,20 +23,20 @@ class Search extends Component {
 		return(
 			<View style={style.container}>
 				<ScrollView>
-						<ListItem containerStyle={style.listItemContainer} titleStyle={style.titleContainer} hideChevron leftIcon={Icons.explore} leftIconContainerStyle={style.avatarStyle} title = "Browse Communities"/>
-						<ListItem containerStyle={style.listItemContainer} titleStyle={style.titleContainer} hideChevron avatar={Icons.popular} avatarStyle={style.avatarStyle}  title = "Popular"/>
-						<ListItem containerStyle={style.listItemContainer} titleStyle={style.titleContainer} hideChevron leftIcon={<Icons.all/>}	 leftIconContainerStyle={style.avatarStyle} roundAvatar={true} title = "All"/>
+						<ListItem containerStyle={[style.listItemContainer, { marginTop:5 }]} titleStyle={style.titleContainer} hideChevron avatar={Icons.explore} avatarStyle={[style.avatarStyle, {transform: [{rotateY: '180 deg'}]}]} roundAvatar title = "Browse Communities" subtitle="Explore all the communities" subtitleStyle={style.subtitle}/>
+						<ListItem containerStyle={style.listItemContainer} titleStyle={style.titleContainer} hideChevron avatar={Icons.popular} avatarStyle={style.avatarStyle} roundAvatar title = "Popular"  subtitle="The hottest posts on the Internet" subtitleStyle={style.subtitle}/>
+						<ListItem containerStyle={style.listItemContainer} titleStyle={style.titleContainer} hideChevron avatar={Icons.all}     avatarStyle={style.avatarStyle}	roundAvatar title = "All"  subtitle="Even more top posts on Reddit" subtitleStyle={style.subtitle}/>
 						<Text style={style.sub}> SUBSCRIPTIONS </Text>
 							{subreddits ? subreddits.map((subreddit, index)=>{
 								return	<ListItem 
-											hideChevron
 											key={index}
 											containerStyle={style.listItemContainer}
 											roundAvatar
 											title={subreddit.display_name_prefixed}
 											avatar = {subreddit.icon_img ? {uri:subreddit.icon_img} : Images.redditImage}
-											avatarStyle	= {{backgroundColor: subreddit.key_color, borderRadius:34/2}}
+											avatarStyle	= {{backgroundColor: subreddit.key_color ? subreddit.key_color : '#20b2aa', borderRadius:34/2}}
 											titleStyle={style.titleContainer}
+											rightIcon ={Icons.star}
 										 />
 								}) : null}
 				</ScrollView>
@@ -56,8 +56,6 @@ const style = StyleSheet.create({
 		backgroundColor: '#fff'
 	},
 	avatarStyle:{
-		width: 34,
-		height: 34,
 		borderRadius: 34/2,
 		backgroundColor: '#20b2aa',
 	},
@@ -73,5 +71,9 @@ const style = StyleSheet.create({
 		fontSize: 13, 
 		marginLeft:10,
 		marginVertical: 10
+	},
+	subtitle:{
+		fontSize: 10,
+		fontWeight: 'normal'
 	}
 })
