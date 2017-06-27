@@ -12,7 +12,7 @@ export const NewPost = () =>{
 	return (
 			<Card containerStyle={style.container} >
 				<View style={style.placeHolder}>
-				 	<Text> {Icons.pencil} </Text>
+				 	<Text> {Icons.SqPencil} </Text>
 				 	<View style={{marginTop: 2}}>
 				 		<Text style={style.placeHolderText}> u/theUnredditor </Text>
 				 		<Text style={style.placeHolderText}> Post something interesting </Text>

@@ -61,6 +61,7 @@ export const fetchFeed = (token)=>{
 				const { children } = response.data.data; // Array of objects with post and kind
 				const posts = children.map(post=>post.data);  // Actual data needed
 				dispatch(actionCreators.savePosts(posts));
+				console.log(posts);
 			})
 			.catch(error=>console.error(error.response))
 		}
@@ -75,7 +76,6 @@ export const fetchSubreddits = (token) =>{
 				const subreddits = children.map(subreddit=>subreddit.data);
 				// sort subreddits alphabetically and store in state
 				subreddits.sort((a,b)=>a.display_name.toLowerCase() < b.display_name.toLowerCase() ? -1 : 1);
-				console.log(subreddits);
 				dispatch(actionCreators.saveSubreddits(subreddits));
 			})
 			.catch(error=>console.error(error.response))

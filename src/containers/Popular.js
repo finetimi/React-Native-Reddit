@@ -34,7 +34,8 @@ class Popular extends Component {
 			// return the hour equivalent
 			default:
 				const hours = Math.floor(timeDelta/60);
-				return `${hours}h`
+				// If hours is less than 24 return hours else return days
+				return hours < 24 ? `${hours}h` : `${Math.floor(hours/24)}d`
 		}
 	}
 	render(){

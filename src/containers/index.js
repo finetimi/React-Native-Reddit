@@ -14,23 +14,22 @@ import Popular from './Popular';
 import Inbox from './Inbox';
 import Account from './Account';
 
-// tabBarLabel style for Top navigation Bar
-const labelStyle =(props, alignSelf)=> ({
+// tabBarLabel style for top navigation Bar
+const labelStyle =(props, alignSelf, marginTop)=> ({
 	fontSize: 13,
 	fontWeight: '600',
 	marginHorizontal: 15,
-	marginTop: 30,
+	marginTop,
 	color: props.focused ? props.tintColor : "#929292",
 	alignSelf
 });
-
 // IndicatorStyle is an absolute positioned View
 const indicatorStyle = (props, alignSelf) => ({
 	backgroundColor: props.activeTintColor,
 	alignSelf: 'flex-end',
-	// width: 120,
-	// left: 30,
 });
+
+/**********  NAVIGATORS   ***********/
 
 /* Navigator for the Home tab which
    navigates between Home and Popular */
@@ -38,13 +37,13 @@ const homeTabs = TabNavigator({
 	Home: {
 		screen: Home,
 		navigationOptions:{
-			tabBarLabel: (props)=>(<Text style={labelStyle(props, 'flex-end')}> HOME </Text>)
+			tabBarLabel: (props)=>(<Text style={labelStyle(props, 'flex-end', 30)}> HOME </Text>)
 		},
 	},
 	Popular:{
 		screen: Popular,
 		navigationOptions:{
-			tabBarLabel: (props)=>(<Text style={labelStyle(props, 'flex-start')}> POPULAR </Text>)
+			tabBarLabel: (props)=>(<Text style={labelStyle(props, 'flex-start', 30)}> POPULAR </Text>)
 		}
 	},
 }, {
@@ -59,7 +58,7 @@ const homeTabs = TabNavigator({
 	} 
 });
 
-// Global tabs navigator which appears
+// Global tabs navigator which appears below all pages
 const Tabs = TabNavigator({
 	Feed: {screen: homeTabs,
 		navigationOptions:{
@@ -77,10 +76,17 @@ const Tabs = TabNavigator({
 	Inbox: {
 		screen: Inbox,
 		navigationOptions:{
-			tabBarIcon: Icons.mail
+			tabBarIcon: Icons.mail,
+			title: 'Inbox',
+			headerLeft: Icons.pencil,
+			headerRight: Icons.tasks,
+			headerStyle: {
+				backgroundColor: '#fff'
+			}
 		}
 	},
-	Account: {screen: Account,
+	Account: {
+		screen: Account,
 		navigationOptions:{
 			tabBarIcon: Icons.user
 		}
@@ -91,7 +97,6 @@ const Tabs = TabNavigator({
 
 // Main Application Navigtor 
 const Routes = StackNavigator({
-	Login: {screen: Login},
 	Home:  {screen: Tabs }
 },{initialRouteName: 'Home'})
 
