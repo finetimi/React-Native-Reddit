@@ -9,7 +9,7 @@ import { TabNavigator, TabBarTop } from 'react-navigation';
 
 // tabBarLabel style for top navigation Bar
 const labelStyle =(props, alignSelf)=> ({
-	fontSize: 13,
+	fontSize: 10,
 	fontWeight: '600',
 	marginHorizontal: 15,
 	marginVertical: 5,

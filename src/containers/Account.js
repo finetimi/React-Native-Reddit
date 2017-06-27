@@ -6,6 +6,9 @@ import {
 } from 'react-native';
 
 export default class Home extends Component {
+	static navigationOptions ={
+		title: 'theUnredittor',
+	}
 	render(){
 		return(
 			<View>

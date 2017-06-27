@@ -88,7 +88,7 @@ const Tabs = TabNavigator({
 	Account: {
 		screen: Account,
 		navigationOptions:{
-			tabBarIcon: Icons.user
+			tabBarIcon: Icons.user,
 		}
 	}
 }, {
