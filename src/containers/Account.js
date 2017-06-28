@@ -21,17 +21,17 @@ export default class Home extends Component {
 			<ScrollView style={style.container}>
 				<ScrollView 
 					horizontal
-					snapToAlignment='center'
+					snapToAlignment='start'
 					snapToInterval={2}
 					alwaysBounceHorizontal={true}
 					showsHorizontalScrollIndicator={false}
 					showsVerticallScrollIndicator={false}
 					contentOffset={{x: width/2, y:0}}
 					>
-						<ListItem leftIcon={Icons.history} 	title="Comments" hideChevron containerStyle={style.headContainer} titleStyle={style.titleStyle} />
-						<ListItem leftIcon={Icons.history} 	title="Karma" hideChevron containerStyle={style.headContainer} titleStyle={style.titleStyle} />
-						<ListItem leftIcon={Icons.history} 	title="Age" hideChevron containerStyle={style.headContainer} titleStyle={style.titleStyle} />
-						<ListItem leftIcon={Icons.history} 	title="Redditor since" hideChevron containerStyle={style.headContainer} titleStyle={style.titleStyle} />
+						<ListItem leftIcon={Icons.history} 	title="Comments" 	   hideChevron containerStyle={style.headContainer} titleStyle={style.headTitle} />
+						<ListItem avatar={Icons.karma} 	leftIconContainerStyle={{width: 45+'%'}} title="13"  subtitle="KARMA" 	  subtitleStyle={style.subtitle} hideChevron containerStyle={style.headContainer} titleStyle={style.headTitle} />
+						<ListItem avatar={Icons.cake} 	leftIconContainerStyle={{width: 45+'%'}} title="363d" subtitle ="REDDIT AGE" subtitleStyle={style.subtitle} hideChevron containerStyle={style.headContainer} titleStyle={style.headTitle} />
+						<ListItem leftIcon={Icons.history} 	title="Redditor since" hideChevron containerStyle={style.headContainer} titleStyle={style.headTitle} />
 
 				</ScrollView>
 				<ListItem leftIcon={Icons.history} 	  title="History"		containerStyle={style.listItemContainer} titleStyle={style.titleStyle} />
@@ -53,25 +53,22 @@ const style = StyleSheet.create({
 	},
 	listItemContainer:{
 		paddingTop: 1,
-		borderBottomWidth: 0.2,
+		borderBottomWidth: 0.1,
 	},
 	headContainer:{
+		flex: 1,
 		marginVertical: 5,
 		borderRightWidth: 0.2,
-		borderBottomWidth: 0.2,
+		borderBottomWidth: 0.1,
 		width: width/2
+	},
+	headTitle:{
+		fontSize: 15,
 	},
 	titleStyle:{
 		fontSize: 12
 	},
-	sub:{
-		color: colors.grey3, 
-		fontSize: 13, 
-		marginLeft:10,
-		marginVertical: 10
-	},
 	subtitle:{
 		fontSize: 10,
-		fontWeight: 'normal'
 	}
 });

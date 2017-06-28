@@ -92,6 +92,9 @@ const Tabs = TabNavigator({
 			headerRight: Icons.settings,
 			headerStyle:{
 				backgroundColor: '#fff'
+			},
+			headerTitleStyle:{
+				fontWeight: 'normal',
 			}
 		}
 	}

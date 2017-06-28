@@ -45,10 +45,13 @@ export let popular		= MAIcons.getImageSource('trending-up', 30, '#fff').then(sou
 
 // Icons for Account 
 export const settings 	= <Ionicons 	name ="ios-settings" size={25} color="#ccc" style={{marginRight: 20}} />
+export const cake 		= <MCIcons 		name="cake-variant" size={30} color="#20b2aa" />
+export const karma 		= <Ionicons		name="md-flower" 	size={30} color ="#FF4300" />
 export const history 	= {type: "material-community", 	name:"timelapse", 				size:20}
 export const bookmark 	= {type: "Entypo", 				name: "bookmark",				size:20}
 export const upvote		= {type: "material-community", 	name: "arrow-up-bold-circle", 	size:20}
 export const account 	= {type: "MaterialIcons", 		name: "account-circle",			size:20}
 export const ban		= {type: "font-awesome", 		name: "ban",					size:20}
 export const myComments = {type: "material-community", 	name: "comment", 				size:20}
-export const myPosts	= {type: "font-awesome", 		name: "pencil-square",					size:20}
+export const myPosts	= {type: "font-awesome", 		name: "pencil-square",			size:20}
+
