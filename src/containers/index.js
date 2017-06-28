@@ -89,6 +89,10 @@ const Tabs = TabNavigator({
 		screen: Account,
 		navigationOptions:{
 			tabBarIcon: Icons.user,
+			headerRight: Icons.settings,
+			headerStyle:{
+				backgroundColor: '#fff'
+			}
 		}
 	}
 }, {
