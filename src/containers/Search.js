@@ -7,9 +7,11 @@ import * as actions from '../actions';
 
 class Search extends Component {
 	componentDidUpdate(prevProps){
+		// if there's a new token fetch subreddits
 		prevProps.token !== this.props.token ?
 		 this.props.fetchSubreddits(this.props.token): null
 	}
+
 	render(){
 		const { subreddits } = this.props;
 		return(

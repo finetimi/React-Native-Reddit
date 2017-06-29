@@ -21,6 +21,13 @@ export default function(state=initialState, action){
 				subreddits: action.subreddits,
 				isLoading: false
 			});
+
+		case ACTIONTYPE.STORE_USER_DETAILS:
+			return Object.assign({}, state, {
+				user: action.userDetails,
+				isLoading: false
+			});
+			
 		default:
 			return state
 	}

@@ -24,3 +24,10 @@ export const saveSubreddits =(subreddits)=>{
 		subreddits
 	}
 }
+
+export const saveUserDetails = (userDetails) =>{
+	return {
+		type: ACTIONTYPE.STORE_USER_DETAILS,
+		userDetails
+	}
+}

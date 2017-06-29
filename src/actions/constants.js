@@ -12,6 +12,7 @@ export const FETCHING_USER_DATA = 'FETCHING_USER_DATA';
 export const LOADING_POSTS		= 'LOADING_POSTS';
 export const STORE_POSTS 		= 'STORE_POSTS';
 export const STORE_SUBREDDITS	= 'STORE_SUBREDDITS';
+export const STORE_USER_DETAILS = 'STORE_USER_DETAILS';
 
 // Axios Object
 export class Axios{

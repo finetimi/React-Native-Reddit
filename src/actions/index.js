@@ -81,3 +81,22 @@ export const fetchSubreddits = (token) =>{
 			.catch(error=>console.error(error.response))
 		};
 }
+
+export const fetchUserDetails = (token) =>{
+	const axios = new ACTIONS.Axios(token);
+	return (dispatch) =>{
+		axios.get('/api/v1/me')
+			.then(response=>{
+				// Filter out only data we need
+				const { comment_karma, created_utc, name, link_karma } = response.data;
+				const userDetails = {
+					comment_karma,
+					created_utc,
+					name,
+					link_karma
+				};
+				dispatch(actionCreators.saveUserDetails(userDetails));
+			})
+			.catch(error=>console.error(error.response))
+	};
+}
