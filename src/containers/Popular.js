@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import List from '../components/List';
 import { NewPost, SortButton } from '../components/Misc';
+import { timeFromNow } from '../actions/constants';
 
 
 class Popular extends Component {
@@ -21,23 +22,7 @@ class Popular extends Component {
 				this.props.fetchFeed(nextProps.state.token);
 		}
 	}
-	timeFromNow(epochTime){
-		// Get time difference in minutes 
-		const timeDelta = Math.floor((Date.now()/1000- epochTime)/60);
-		switch(timeDelta){
-			// if timedelta is zero return Now
-			case timeDelta === 0:
-				return 'Now';
-			// if timedelta is less than 60 return minutes
-			case timeDelta < 60:
-				return `${timeDelta}m`;
-			// return the hour equivalent
-			default:
-				const hours = Math.floor(timeDelta/60);
-				// If hours is less than 24 return hours else return days
-				return hours < 24 ? `${hours}h` : `${Math.floor(hours/24)}d`
-		}
-	}
+
 	render(){
 		const { hotPosts } = this.props.state; 
 		return(	
@@ -49,7 +34,7 @@ class Popular extends Component {
 						key		  = {index}
 						subreddit = {post.subreddit_name_prefixed}
 						domain	  = {post.domain}
-						posted    = {this.timeFromNow(post.created_utc)}
+						posted    = {timeFromNow(post.created_utc)}
 						title 	  = {post.title} 
 						image	  = {post.preview ? post.preview.images[0].source.url : null}
 						votes 	  = {post.score}

@@ -13,6 +13,7 @@ import { ListItem, colors } from 'react-native-elements';
 const {width, height} = Dimensions.get('window');
 
 const Home = (props)=> {
+	const { karma, link_karma, comment_karma, age, created } = props;
 	return(
 		<ScrollView style={style.container}>
 			<ScrollView 
@@ -24,10 +25,10 @@ const Home = (props)=> {
 				showsVerticallScrollIndicator={false}
 				contentOffset={{x: width/2, y:0}}
 				>
-					<ListItem title="3 from comments" 	subtitle="10 from posts" subtitleStyle={style.slideStyle}	hideChevron containerStyle={style.headContainer} titleStyle={style.slideStyle}  />
-					<ListItem title="13"  			  	subtitle="KARMA" 	  	 subtitleStyle={style.subtitle} 	hideChevron containerStyle={style.headContainer} titleStyle={style.headTitle} avatar={Icons.karma}/>
-					<ListItem title="363d"				subtitle ="REDDIT AGE"   subtitleStyle={style.subtitle} 	hideChevron containerStyle={style.headContainer} titleStyle={style.headTitle} avatar={Icons.cake} />
-					<ListItem title="A redditor since"	subtitle="Jul 23, 2016"  subtitleStyle={style.slideStyle}	hideChevron containerStyle={style.headContainer} titleStyle={style.slideStyle} />
+					<ListItem title={`${comment_karma} from comments`} 	subtitle="10 from posts" subtitleStyle={style.slideStyle}	hideChevron containerStyle={style.headContainer} titleStyle={style.slideStyle}  />
+					<ListItem title={`${karma}`}  			  			subtitle="KARMA" 	  	 subtitleStyle={style.subtitle} 	hideChevron containerStyle={style.headContainer} titleStyle={style.headTitle} avatar={Icons.karma}/>
+					<ListItem title={`${age}`}							subtitle ="REDDIT AGE"   subtitleStyle={style.subtitle} 	hideChevron containerStyle={style.headContainer} titleStyle={style.headTitle} avatar={Icons.cake} />
+					<ListItem title={`A redditor since`}				subtitle= {created}  	 subtitleStyle={style.slideStyle}	hideChevron containerStyle={style.headContainer} titleStyle={style.slideStyle} />
 
 			</ScrollView>
 			<ListItem leftIcon={Icons.history} 	  title="History"		containerStyle={style.listItemContainer} titleStyle={style.titleStyle} />

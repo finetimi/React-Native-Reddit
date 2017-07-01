@@ -95,6 +95,7 @@ export const fetchUserDetails = (token) =>{
 					name,
 					link_karma
 				};
+				console.log(userDetails)
 				dispatch(actionCreators.saveUserDetails(userDetails));
 			})
 			.catch(error=>console.error(error.response))

@@ -6,15 +6,14 @@ import {
 import Profile from '../components/Account';
 import * as actions from '../actions';
 import { connect } from 'react-redux';
+import { timeFromNow } from '../actions/constants';
 
 class Account extends Component {
 	constructor(){
 		super();
 	}
 	static navigationOptions ={
-		// title: this.props.token ? this.props.name : "Join Reddit",
-		// title: 'Join Reddit',
-		// me: console.log(Account)
+		title : 'Join Reddit'
 	}
 
 	componentWillReceiveProps(nextProps){
@@ -29,11 +28,33 @@ class Account extends Component {
 		}
 	}
 
-	render(){
-			console.log(Account.navigationOptions)
+	componentDidUpdate(prevProps){
+		const { name } = this.props;
+		// If there's a username switch the title to a username
+		name && name !== prevProps.name ? Account.navigationOptions['title'] = name : Account.navigationOptions['title'] = 'Join Reddit';
+	}
 
+	// Change date from epoch time to (Month Day, Year) format
+	formatDate(epoch){
+		// convert epoch date to milliseconds and return an array
+		const dateArray = new Date(epoch*1000).toDateString().split(' ');
+		// Add ',' to the end of Day
+		dateArray[2] += ',';
+		// Remove the first element of dateArray and return a string
+		const dateString =  dateArray.splice(1).join(' ');
+		return dateString;
+	}
+
+	render(){
+		const { token, link_karma, comment_karma, created_utc } = this.props;
 		return(
-			<Profile {...this.props}/>
+			<Profile 
+				karma 		  = {link_karma + comment_karma}
+				age 		  = {timeFromNow(created_utc)}
+				link_karma 	  = {link_karma}
+				comment_karma = {comment_karma}
+				created       = {this.formatDate(created_utc)}
+				/>				
 			)
 	}
 }

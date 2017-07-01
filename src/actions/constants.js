@@ -24,6 +24,24 @@ export class Axios{
 	}
 	// initialize get request with a provided path
 	get(path){
-		return axios.get(path, this.config)
+		return axios.get(path, this.config);
 	}
-}
+};
+
+export function timeFromNow(epochTime){
+	// Get time difference in minutes 
+	const timeDelta = Math.floor((Date.now()/1000- epochTime)/60);
+	switch(timeDelta){
+		// if timedelta is zero return Now
+		case timeDelta === 0:
+			return 'Now';
+		// if timedelta is less than 60 return minutes
+		case timeDelta < 60:
+			return `${timeDelta}m`;
+		// return the hour equivalent
+		default:
+			const hours = Math.floor(timeDelta/60);
+			// If hours is less than 24, return hours else return days
+			return hours < 24 ? `${hours}h` : `${Math.floor(hours/24)}d`
+	}
+};
