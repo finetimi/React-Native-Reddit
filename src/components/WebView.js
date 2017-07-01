@@ -8,7 +8,8 @@ import {
 	StyleSheet,
 	Dimensions,
 	Animated,
-	Easing
+	Easing,
+	ActivityIndicator,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Images from '../assets';
@@ -24,7 +25,8 @@ export default class LoginWebView extends Component{
 		super();
 		this.animatedValue = new Animated.Value(defaultHeight);
 		this.state = {
-			height: defaultHeight
+			height: defaultHeight,
+			webViewLoading: true
 		}
 	}
 	componentDidMount(){
@@ -54,6 +56,7 @@ export default class LoginWebView extends Component{
 			}
 		).start(()=>this.props.openWebView(false));
 	}
+
 	navigateStateChanged(currentState){
 		if (currentState.url.startsWith("rnreddit://")){
 			this.animateClose();
@@ -70,6 +73,10 @@ export default class LoginWebView extends Component{
 	}
 	
 	render(){
+		if (!this.props.visible){
+			console.log(this.props)
+			return null
+		}
 
 		return(
 			<View style={style.container}>
@@ -80,7 +87,9 @@ export default class LoginWebView extends Component{
 						style={[style.modal, 
 							{transform:[{translateY: this.animatedValue}]}
 						]}>
+						<ActivityIndicator animating={this.state.webViewLoading} style={style.loading} size="large"/>
 					 	<WebView 
+					 		onLoadEnd = {()=>this.setState({webViewLoading: false})}
 					 		source={{uri: LOGIN_URI}}
 					 		onNavigationStateChange ={this.navigateStateChanged.bind(this)}/>
 				</Animated.View>
@@ -102,14 +111,13 @@ const style = StyleSheet.create({
 		opacity: 0.5,
 	},
 	modal:{
-		...StyleSheet.absoluteFillObject,
 		backgroundColor: '#fff',
-		top: height - (height * 0.90)
+		height: height * 0.75,
+		borderTopLeftRadius: 20,
+		borderTopRightRadius:20,
+		overflow: 'hidden'
 	},
-	webviewInset:{
-		top:5,
-		left:5, 
-		right:5, 
-		bottom:5,
-	},
+	loading:{
+		marginTop: 50+'%',
+	}
 })

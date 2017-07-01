@@ -34,13 +34,7 @@ class Home extends Component {
 	render(){
 		return (
 			<View style={{flex:1}}>
-				<Login openWebView ={this.openWebView.bind(this)} />
-				{ this.state.openWebView ? 
-					<LoginWebView 
-						{...this.props}
-						openWebView={this.openWebView.bind(this)} 
-						/> : null 
-				}	
+				<Login openWebView ={this.openWebView.bind(this)} {...this.props}/>	
 			</View>
 			)
 	}

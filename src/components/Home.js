@@ -23,7 +23,7 @@ export default (props)=>(
 			<TouchableOpacity style={style.button} onPress={()=>props.openWebView(true)}> 
 				<Text style={style.buttonText}> Sign In </Text>
 			</TouchableOpacity>
-			<TouchableOpacity style={[style.button, {marginTop:15, backgroundColor:'#FF4300'}]} onPress={()=>this.openWebView()}> 
+			<TouchableOpacity onPress={()=>props.navigation.navigate('Auth')} some={console.log(props)} style={[style.button, {marginTop:15, backgroundColor:'#FF4300'}]} > 
 				<Text style={style.buttonText}> Sign Up </Text>
 			</TouchableOpacity>
 
@@ -32,7 +32,7 @@ export default (props)=>(
 
 const style = StyleSheet.create({
 	container:{
-		backgroundColor: 'white',
+		backgroundColor: '#fcfcfc',
 		alignItems: 'center',
 		height,
 		width

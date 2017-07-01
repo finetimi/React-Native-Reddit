@@ -33,9 +33,9 @@ const indicatorStyle = (props, alignSelf) => ({
 
 /* Navigator for the Home tab which
    navigates between Home and Popular */
-const homeTabs = TabNavigator({
+const HomeTabs = TabNavigator({
 	Home: {
-		screen: Home,
+		screen: Login,
 		navigationOptions:{
 			tabBarLabel: (props)=>(<Text style={labelStyle(props, 'flex-end', 30)}> HOME </Text>)
 		},
@@ -60,7 +60,8 @@ const homeTabs = TabNavigator({
 
 // Global tabs navigator which appears below all pages
 const Tabs = TabNavigator({
-	Feed: {screen: homeTabs,
+	Feed: {
+		screen: HomeTabs,
 		navigationOptions:{
 			header: null,
 			tabBarIcon: Icons.reddit,
@@ -99,13 +100,14 @@ const Tabs = TabNavigator({
 		}
 	}
 }, {
+	initialRouteName: 'Feed',
 	tabBarOptions:{showLabel: false, activeTintColor: '#20b2aa', backgroundColor:'#fff'},
 });
 
 // Main Application Navigtor 
 const Routes = StackNavigator({
 	Home:  {screen: Tabs }
-},{initialRouteName: 'Home'})
+})
 
 
 export default connect(null, actions)(Routes);
