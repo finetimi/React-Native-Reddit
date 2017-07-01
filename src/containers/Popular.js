@@ -37,7 +37,7 @@ class Popular extends Component {
 						posted    = {timeFromNow(post.created_utc)}
 						title 	  = {post.title} 
 						image	  = {post.preview ? post.preview.images[0].source.url : null}
-						votes 	  = {post.score}
+						votes 	  = {post.score/1e3 < 1 ? post.score : `${Math.round(post.score/1e3)}k`}
 						comments  = {post.num_comments}
 						 />
 					})

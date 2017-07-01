@@ -55,7 +55,7 @@ const style = StyleSheet.create({
 	},
 	filter:{
 		flexDirection: 'row',
-		marginVertical: 5
+		marginTop: 5
 	},
 	filterText: {
 		fontSize:10,
