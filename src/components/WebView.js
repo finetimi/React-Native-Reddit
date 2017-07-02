@@ -31,7 +31,6 @@ export default class LoginWebView extends Component{
 	}
 	componentDidMount(){
 		this.animateOpen();
-		console.log('opened');
 	}
 	componentWillUnmount(){
 		this.animateClose();
@@ -65,7 +64,6 @@ export default class LoginWebView extends Component{
 			const expires = url['expires_in'];
 			const expireTime = Date.now() + parseInt(expires * 1000); // convert expire time to millisecods 
 
-			console.log(token, expireTime)
 			// Store token in asyncstorage and state
 			return token ? this.props.authUser(token, expireTime) : null;
 		}

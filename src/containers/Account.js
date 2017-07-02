@@ -17,9 +17,9 @@ class Account extends Component {
 		title : 'Join Reddit'
 	}
 	componentDidMount(){
-		const { token, fetchUserDetails } = this.props;
+		const { token, fetchUserDetails, name } = this.props;
 		// Fetch user details if there's a token
-		token && fetchUserDetails(nextProps.token);
+		token && fetchUserDetails(token);
 
 	}
 

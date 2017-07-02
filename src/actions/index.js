@@ -63,11 +63,11 @@ export const fetchFeed = (path, token)=>{
 				// Filter for actual posts data needed 
 				const posts = children.map(post=>post.data);  
 				
-				path === '/random' ? 
+				path === '/top' ? 
 				dispatch(actionCreators.saveRandomPosts(posts)):
 				dispatch(actionCreators.saveHotPosts(posts));
 			})
-			.catch(error=>console.error(error.response))
+			.catch(error=>console.error(error))
 		}
 };
 export const fetchSubreddits = (token) =>{
@@ -99,7 +99,6 @@ export const fetchUserDetails = (token) =>{
 					name,
 					link_karma
 				};
-				console.log(userDetails)
 				dispatch(actionCreators.saveUserDetails(userDetails));
 			})
 			.catch(error=>console.error(error.response))

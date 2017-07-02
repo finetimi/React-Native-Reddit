@@ -18,7 +18,7 @@ class Home extends Component {
 	componentDidMount(){
 		const { token, fetchFeed } = this.props;
 		// fetch feed if there's a token, else do nothing
-		return token && fetchFeed('/hot', nextProps.token);
+		return token && fetchFeed('/hot', token);
 	}
 
 	componentWillUpdate(nextProps){

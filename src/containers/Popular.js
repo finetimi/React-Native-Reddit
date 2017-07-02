@@ -17,14 +17,14 @@ class Popular extends Component {
 	componentDidMount(){
 		const { token, fetchFeed } = this.props;
 		// fetch feed if there's a token, else do nothing
-		return token && fetchFeed('/random', token);
+		return token && fetchFeed('/top', token);
 	}
 
 	componentWillUpdate(nextProps){
 		// If token changes refresh feed with new token
 		if (nextProps.token && 
 			nextProps.token !== this.props.token){
-				this.props.fetchFeed('/random', nextProps.token);
+				this.props.fetchFeed('/top', nextProps.token);
 		}
 	}
 
