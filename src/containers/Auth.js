@@ -49,10 +49,10 @@ class Auth extends Component {
 }
 const mapStateToProps =(state)=>({
 	state: state.AuthReducer
-})
+});
 
 // shortcut for mapping dispatch to props
-export default connect(mapStateToProps, actions)(Auth)
+export default connect(mapStateToProps, actions)(Auth);
 
 const style = StyleSheet.create({
 	container:{
@@ -87,4 +87,4 @@ const style = StyleSheet.create({
 		color: '#fff',
 		fontWeight: 'bold'
 	}
-})
+});
