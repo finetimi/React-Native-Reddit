@@ -25,19 +25,19 @@ const Home = (props)=> {
 				showsVerticallScrollIndicator={false}
 				contentOffset={{x: width/2, y:0}}
 				>
-					<ListItem title={`${comment_karma} from comments`} 	subtitle="10 from posts" subtitleStyle={style.slideStyle}	hideChevron containerStyle={style.headContainer} titleStyle={style.slideStyle}  />
-					<ListItem title={`${karma}`}  			  			subtitle="KARMA" 	  	 subtitleStyle={style.subtitle} 	hideChevron containerStyle={style.headContainer} titleStyle={style.headTitle} avatar={Icons.karma}/>
-					<ListItem title={`${age}`}							subtitle ="REDDIT AGE"   subtitleStyle={style.subtitle} 	hideChevron containerStyle={style.headContainer} titleStyle={style.headTitle} avatar={Icons.cake} />
-					<ListItem title={`A redditor since`}				subtitle= {created}  	 subtitleStyle={style.slideStyle}	hideChevron containerStyle={style.headContainer} titleStyle={style.slideStyle} />
+					<ListItem title={`${comment_karma} from comments`} subtitle="10 from posts" subtitleStyle={style.slideStyle}	hideChevron containerStyle={style.headContainer} titleStyle={style.slideStyle}  />
+					<ListItem title={`${karma}`}  			   subtitle="KARMA" 	    subtitleStyle={style.subtitle} 	hideChevron containerStyle={style.headContainer} titleStyle={style.headTitle} avatar={Icons.karma}/>
+					<ListItem title={`${age}`}			   subtitle ="REDDIT AGE"   subtitleStyle={style.subtitle} 	hideChevron containerStyle={style.headContainer} titleStyle={style.headTitle} avatar={Icons.cake} />
+					<ListItem title={`A redditor since`}		   subtitle= {created}      subtitleStyle={style.slideStyle}	hideChevron containerStyle={style.headContainer} titleStyle={style.slideStyle} />
 
 			</ScrollView>
-			<ListItem leftIcon={Icons.history} 	  title="History"		containerStyle={style.listItemContainer} titleStyle={style.titleStyle} />
-			<ListItem leftIcon={Icons.bookmark}   title="Saved" 		containerStyle={style.listItemContainer} titleStyle={style.titleStyle} />
-			<ListItem leftIcon={Icons.myPosts} 	  title="My Posts" 		containerStyle={style.listItemContainer} titleStyle={style.titleStyle} />
-			<ListItem leftIcon={Icons.myComments} title="My Comments" 	containerStyle={style.listItemContainer} titleStyle={style.titleStyle} />
-			<ListItem leftIcon={Icons.upvote}	  title="Upvoted" 		containerStyle={style.listItemContainer} titleStyle={style.titleStyle}/>
-			<ListItem leftIcon={Icons.account}    title="Friends" 		containerStyle={style.listItemContainer} titleStyle={style.titleStyle} />
-			<ListItem leftIcon={Icons.ban}	  	  title="Hidden" 		containerStyle={style.listItemContainer} titleStyle={style.titleStyle} />
+			<ListItem leftIcon={Icons.history}    title="History"	    containerStyle={style.listItemContainer} titleStyle={style.titleStyle} />
+			<ListItem leftIcon={Icons.bookmark}   title="Saved" 	    containerStyle={style.listItemContainer} titleStyle={style.titleStyle} />
+			<ListItem leftIcon={Icons.myPosts}    title="My Posts"      containerStyle={style.listItemContainer} titleStyle={style.titleStyle} />
+			<ListItem leftIcon={Icons.myComments} title="My Comments"   containerStyle={style.listItemContainer} titleStyle={style.titleStyle} />
+			<ListItem leftIcon={Icons.upvote}     title="Upvoted" 	    containerStyle={style.listItemContainer} titleStyle={style.titleStyle}/>
+			<ListItem leftIcon={Icons.account}    title="Friends" 	    containerStyle={style.listItemContainer} titleStyle={style.titleStyle} />
+			<ListItem leftIcon={Icons.ban}	      title="Hidden" 	    containerStyle={style.listItemContainer} titleStyle={style.titleStyle} />
 		</ScrollView>
 		)
 }
