@@ -10,7 +10,7 @@ To use this app, you'll need to register a Reddit oauth application.
 ## Implementations
 If you're here for an example of how to implement a certain feature/code, visit the following paths
 - **react-navigation nesting navigation:** `src/containers/index.js`
-- **set indicatorStyle for TabBarTop on iOS:** `src/containers/index.js line 49`
+- **set indicatorStyle for TabBarTop on iOS:** [`src/containers/index.js line 49`](https://github.com/finetimi/React-Native-Reddit/blob/master/src/containers/index.js#L49)
 - **oauth implicit flow grant for apps:** `src/components/WebView.js line 59`
 - **Various ways to render Icons:** `src/components/Icons.js`
 
