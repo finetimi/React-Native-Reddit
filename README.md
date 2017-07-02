@@ -12,7 +12,7 @@ If you're here for an example of how to implement a certain feature/code, visit 
 - **react-navigation nesting navigation:** [`src/containers/index.js`](https://github.com/finetimi/React-Native-Reddit/blob/master/src/containers/index.js)
 - **set indicatorStyle for TabBarTop on iOS:** [`src/containers/index.js line 49`](https://github.com/finetimi/React-Native-Reddit/blob/master/src/containers/index.js#L49)
 - **oauth implicit flow grant for apps:** [`src/components/WebView.js line 59`](https://github.com/finetimi/React-Native-Reddit/blob/master/src/components/WebView.js)
-- **Various ways to render Icons:** [`src/components/Icons.js`](https://github.com/finetimi/React-Native-Reddit/blob/master/src/components/Icons.js]
+- **Various ways to render Icons:** [`src/components/Icons.js`](https://github.com/finetimi/React-Native-Reddit/blob/master/src/components/Icons.js)
 
 
 ## 3rd Party Libs used:
