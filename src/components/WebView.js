@@ -66,18 +66,12 @@ export default class LoginWebView extends Component{
 			const expireTime = Date.now() + parseInt(expires * 1000); // convert expire time to millisecods 
 
 			console.log(token, expireTime)
-			
 			// Store token in asyncstorage and state
-			this.props.authUser(token, expireTime);
+			return token ? this.props.authUser(token, expireTime) : null;
 		}
 	}
 	
 	render(){
-		if (!this.props.visible){
-			console.log(this.props)
-			return null
-		}
-
 		return(
 			<View style={style.container}>
 				<TouchableWithoutFeedback onPress={()=>this.animateClose()}>
@@ -87,7 +81,7 @@ export default class LoginWebView extends Component{
 						style={[style.modal, 
 							{transform:[{translateY: this.animatedValue}]}
 						]}>
-						<ActivityIndicator animating={this.state.webViewLoading} style={style.loading} size="large"/>
+						{this.state.webViewLoading && <ActivityIndicator  style={style.loading} size="large"/>}
 					 	<WebView 
 					 		onLoadEnd = {()=>this.setState({webViewLoading: false})}
 					 		source={{uri: LOGIN_URI}}

@@ -10,7 +10,8 @@ export const LOGIN_URI 			= `https://www.reddit.com/api/v1/authorize.compact?cli
 export const AUTH_USER 			= 'AUTH_USER';
 export const FETCHING_USER_DATA = 'FETCHING_USER_DATA';
 export const LOADING_POSTS		= 'LOADING_POSTS';
-export const STORE_POSTS 		= 'STORE_POSTS';
+export const STORE_HOT_POSTS 	= 'STORE_HOT_POSTS';
+export const STORE_RANDOM_POSTS = 'STORE_RANDOM_POSTS';
 export const STORE_SUBREDDITS	= 'STORE_SUBREDDITS';
 export const STORE_USER_DETAILS = 'STORE_USER_DETAILS';
 

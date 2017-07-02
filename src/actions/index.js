@@ -53,15 +53,19 @@ export const isTokenExpired = ()=>{
 	}
 };
 
-export const fetchFeed = (token)=>{
+export const fetchFeed = (path, token)=>{
 	const axios = new ACTIONS.Axios(token);
 	return (dispatch)=>{
-		axios.get('/hot')
+		axios.get(path)
 			.then(response=>{
-				const { children } = response.data.data; // Array of objects with post and kind
-				const posts = children.map(post=>post.data);  // Actual data needed
-				dispatch(actionCreators.savePosts(posts));
-				console.log(posts);
+				// Array of objects with post and kind
+				const { children } = response.data.data;
+				// Filter for actual posts data needed 
+				const posts = children.map(post=>post.data);  
+				
+				path === '/random' ? 
+				dispatch(actionCreators.saveRandomPosts(posts)):
+				dispatch(actionCreators.saveHotPosts(posts));
 			})
 			.catch(error=>console.error(error.response))
 		}

@@ -7,6 +7,7 @@ import Profile from '../components/Account';
 import * as actions from '../actions';
 import { connect } from 'react-redux';
 import { timeFromNow } from '../actions/constants';
+import Login from './Auth';
 
 class Account extends Component {
 	constructor(){
@@ -15,23 +16,31 @@ class Account extends Component {
 	static navigationOptions ={
 		title : 'Join Reddit'
 	}
+	componentDidMount(){
+		const { token, fetchUserDetails } = this.props;
+		// Fetch user details if there's a token
+		token && fetchUserDetails(nextProps.token);
+
+	}
 
 	componentWillReceiveProps(nextProps){
-		const { token } = this.props;
+		const { token, fetchUserDetails, saveUserDetails } = this.props;
 		// If there's a new token, fetch user account details
 		if (nextProps.token && token !== nextProps.token){
-			return this.props.fetchUserDetails(nextProps.token);
+			return fetchUserDetails(nextProps.token);
 		}
 		// else if token is expired, clear user account details
 		else if (!nextProps.token && token !== nextProps.token){
-			return this.props.saveUserDetails(null);
+			return saveUserDetails(null);
 		}
 	}
 
 	componentDidUpdate(prevProps){
 		const { name } = this.props;
 		// If there's a username switch the title to a username
-		name && name !== prevProps.name ? Account.navigationOptions['title'] = name : Account.navigationOptions['title'] = 'Join Reddit';
+		if (name && name !== prevProps.name) {
+			Account.navigationOptions['title'] = name;
+		} 
 	}
 
 	// Change date from epoch time to (Month Day, Year) format
@@ -48,13 +57,15 @@ class Account extends Component {
 	render(){
 		const { token, link_karma, comment_karma, created_utc } = this.props;
 		return(
+			token ? 
 			<Profile 
 				karma 		  = {link_karma + comment_karma}
 				age 		  = {timeFromNow(created_utc)}
 				link_karma 	  = {link_karma}
 				comment_karma = {comment_karma}
 				created       = {this.formatDate(created_utc)}
-				/>				
+				/> :
+				<Login />				
 			)
 	}
 }

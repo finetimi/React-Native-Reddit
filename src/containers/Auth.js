@@ -11,12 +11,10 @@ import {
 	StyleSheet,
 	Dimensions,
 } from 'react-native';
-import Login from '../components/Home';
 import LoginWebView from '../components/WebView';
 import Images from '../assets';
 
 const { height, width } = Dimensions.get('window');
-
 
 class Auth extends Component {
 	state = {
@@ -40,11 +38,11 @@ class Auth extends Component {
 				<TouchableOpacity style={style.button} onPress={()=>this.openWebView(true)}> 
 					<Text style={style.buttonText}> Sign In </Text>
 				</TouchableOpacity>
-				<LoginWebView 
-					visible={this.state.isWebViewOpen}
-					{...this.props}
-					openWebView={this.openWebView.bind(this)} 
-					/>
+				{this.state.isWebViewOpen && <LoginWebView 
+												authUser 	= {this.props.authUser}
+												openWebView	= {this.openWebView.bind(this)} 
+												/>
+				}
 			</View>
 			)
 	}

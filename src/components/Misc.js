@@ -5,7 +5,10 @@ import {
 	View,
 	TouchableWithoutFeedback,
 	StyleSheet,
-	Text
+	Text,
+	Animated,
+	Easing,
+
 	} from 'react-native'; 
 
 export const NewPost = () =>{
@@ -37,6 +40,12 @@ export const SearchReddit =()=>(
 			containerStyle={style.searchContainer} 
 			placeholder='Find a community or post' />
 	);
+
+export const Loading = props =>(
+	<Animated.View style={style.loading}>
+		{Icons.redditLoading}
+	</Animated.View>
+)
 
 const style = StyleSheet.create({
 	container:{
@@ -72,5 +81,10 @@ const style = StyleSheet.create({
 		justifyContent: 'center',
 		alignContent: 'center',
 		opacity: 0.5
+	},
+	loading:{
+		...StyleSheet.absoluteFillObject,
+		justifyContent: 'center',
+		alignItems: 'center'
 	}
 })

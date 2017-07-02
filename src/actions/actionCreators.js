@@ -9,9 +9,16 @@ export const authenticateUser = (token, expires)=>{
 	}
 };
 
-export const savePosts = (posts)=>{
+export const saveHotPosts = (posts)=>{
 	return {
-		type: ACTIONTYPE.STORE_POSTS,
+		type: ACTIONTYPE.STORE_HOT_POSTS,
+		posts
+	}
+};
+
+export const saveRandomPosts = (posts)=>{
+	return {
+		type: ACTIONTYPE.STORE_RANDOM_POSTS,
 		posts
 	}
 };

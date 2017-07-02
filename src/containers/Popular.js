@@ -8,29 +8,34 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import List from '../components/List';
+import Posts from '../components/List';
 import { NewPost, SortButton } from '../components/Misc';
 import { timeFromNow } from '../actions/constants';
 
 
 class Popular extends Component {
+	componentDidMount(){
+		const { token, fetchFeed } = this.props;
+		// fetch feed if there's a token, else do nothing
+		return token && fetchFeed('/random', token);
+	}
+
 	componentWillUpdate(nextProps){
 		// If token changes refresh feed with new token
-		if (nextProps.state.token && 
-			nextProps.state.token !== this.props.state.token){
-				console.log('new token', nextProps.state.token)
-				this.props.fetchFeed(nextProps.state.token);
+		if (nextProps.token && 
+			nextProps.token !== this.props.token){
+				this.props.fetchFeed('/random', nextProps.token);
 		}
 	}
 
 	render(){
-		const { hotPosts } = this.props.state; 
+		const { randomPosts } = this.props; 
 		return(	
 			<ScrollView>
 				<SortButton /> 
 				<NewPost />
-				{hotPosts && hotPosts.map((post, index)=>{
-					return <List 
+				{randomPosts && randomPosts.map((post, index)=>{
+					return <Posts 
 						key		  = {index}
 						subreddit = {post.subreddit_name_prefixed}
 						domain	  = {post.domain}
@@ -47,7 +52,8 @@ class Popular extends Component {
 	}
 }
 const mapStateToProps =(state)=>({
-	state:{ ...state.AuthReducer, ...state.UserReducer}
+	...state.AuthReducer, 
+	...state.UserReducer
 
 })
 export default connect(mapStateToProps, actions)(Popular);

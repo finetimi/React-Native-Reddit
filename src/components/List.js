@@ -12,7 +12,7 @@ import * as Icons from './Icons';
 
 const {width, height } = Dimensions.get('window');
 
-export default class List extends Component {
+export default class Posts extends Component {
 	render(){
 		const { 
 			subreddit,

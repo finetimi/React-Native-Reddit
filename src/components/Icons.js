@@ -55,3 +55,6 @@ export const ban		= {type: "font-awesome", 		name: "ban",					size:20}
 export const myComments = {type: "material-community", 	name: "comment", 				size:20}
 export const myPosts	= {type: "font-awesome", 		name: "pencil-square",			size:20}
 
+// Icons for Misc
+export const loadingReddit = <FAIcon name="reddit" size={30} style={{color:'#FF4300'}}/>
+

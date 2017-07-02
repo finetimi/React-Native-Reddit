@@ -9,7 +9,6 @@ import * as Icons from '../components/Icons';
 import { SearchReddit } from '../components/Misc';
 import Home from './Home';
 import Search from './Search';
-import Login from './Login';
 import Popular from './Popular';
 import Inbox from './Inbox';
 import Account from './Account';
@@ -35,7 +34,7 @@ const indicatorStyle = (props, alignSelf) => ({
    navigates between Home and Popular */
 const HomeTabs = TabNavigator({
 	Home: {
-		screen: Login,
+		screen: Home,
 		navigationOptions:{
 			tabBarLabel: (props)=>(<Text style={labelStyle(props, 'flex-end', 30)}> HOME </Text>)
 		},
@@ -100,6 +99,7 @@ const Tabs = TabNavigator({
 		}
 	}
 }, {
+	lazy: true,
 	initialRouteName: 'Feed',
 	tabBarOptions:{showLabel: false, activeTintColor: '#20b2aa', backgroundColor:'#fff'},
 });

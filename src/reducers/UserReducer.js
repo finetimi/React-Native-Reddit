@@ -10,10 +10,16 @@ export default function(state=initialState, action){
 		case ACTIONTYPE.LOADING_POSTS:
 			return {...state, isLoading: true}
 
-		case ACTIONTYPE.STORE_POSTS:
+		case ACTIONTYPE.STORE_HOT_POSTS:
 			return Object.assign({}, state, {
 				isLoading: false,
 				hotPosts: action.posts
+			});
+
+		case ACTIONTYPE.STORE_RANDOM_POSTS:
+			return Object.assign({}, state, {
+				isLoading: false,
+				randomPosts: action.posts
 			});
 
 		case ACTIONTYPE.STORE_SUBREDDITS:
