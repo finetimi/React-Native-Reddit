@@ -39,14 +39,14 @@ class Account extends Component {
 		const { name } = this.props;
 		// If there's a username switch the title to a username
 		if (name && name !== prevProps.name) {
-			Account.navigationOptions['title'] = name;
+			return Account.navigationOptions['title'] = name;
 		} 
 	}
 
 	// Change date from epoch time to (Month Day, Year) format
 	formatDate(epoch){
 		// convert epoch date to milliseconds and return an array
-		const dateArray = new Date(epoch*1000).toDateString().split(' ');
+		const dateArray = new Date(epoch*1e3).toDateString().split(' ');
 		// Add ',' to the end of Day
 		dateArray[2] += ',';
 		// Remove the first element of dateArray and return a string
@@ -57,13 +57,12 @@ class Account extends Component {
 	render(){
 		const { token, link_karma, comment_karma, created_utc } = this.props;
 		return(
-			token ? 
-			<Profile 
-				karma 		  = {link_karma + comment_karma}
-				age 		  = {timeFromNow(created_utc)}
-				link_karma 	  = {link_karma}
-				comment_karma = {comment_karma}
-				created       = {this.formatDate(created_utc)}
+			token ? <Profile 
+				    karma 	  = {link_karma + comment_karma}
+				    age 	  = {timeFromNow(created_utc)}
+				    link_karma    = {link_karma}
+				    comment_karma = {comment_karma}
+				    created       = {this.formatDate(created_utc)}
 				/> :
 				<Login />				
 			)
