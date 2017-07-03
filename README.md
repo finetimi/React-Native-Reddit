@@ -1,4 +1,4 @@
-# React-Native-Reddit
+# React Native Reddit
 
 ![comp](https://user-images.githubusercontent.com/20421030/27773626-d017a7dc-5f4b-11e7-807a-b9286f50b393.png)
 
@@ -22,6 +22,7 @@ If you're here for an example of how to implement a certain feature/code, visit 
 - qs 
 
 ## Todo:
+- Fetch more posts
 - Add Loading Indicator
 - Set action for filter button
 - Set action for new post button
