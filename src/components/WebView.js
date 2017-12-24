@@ -76,14 +76,14 @@ export default class LoginWebView extends Component{
 					<Animated.View style={style.backDrop} />
 				</TouchableWithoutFeedback>
 				<Animated.View 
-						style={[style.modal, 
-							{transform:[{translateY: this.animatedValue}]}
-						]}>
-						{this.state.webViewLoading && <ActivityIndicator  style={style.loading} size="large"/>}
-					 	<WebView 
-					 		onLoadEnd = {()=>this.setState({webViewLoading: false})}
-					 		source={{uri: LOGIN_URI}}
-					 		onNavigationStateChange ={this.navigateStateChanged.bind(this)}/>
+					style={[style.modal, 
+						{transform:[{translateY: this.animatedValue}]}
+					]}>
+					{this.state.webViewLoading && <ActivityIndicator  style={style.loading} size="large"/>}
+					<WebView 
+						onLoadEnd = {()=>this.setState({webViewLoading: false})}
+						source={{uri: LOGIN_URI}}
+						onNavigationStateChange ={this.navigateStateChanged.bind(this)}/>
 				</Animated.View>
 			</View> 
 		)

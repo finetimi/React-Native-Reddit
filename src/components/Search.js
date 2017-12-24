@@ -21,14 +21,14 @@ const Search = (props) =>{
 				<Text style={style.sub}> SUBSCRIPTIONS </Text>
 					{subreddits ? subreddits.map((subreddit, index)=>{
 						return	<ListItem 
-									key={index}
-									containerStyle={style.listItemContainer}
-									roundAvatar
-									title={subreddit.display_name_prefixed}
-									avatar = {subreddit.icon_img ? {uri:subreddit.icon_img} : Images.redditImage}
-									avatarStyle	= {{backgroundColor: subreddit.key_color ? subreddit.key_color : '#20b2aa', borderRadius:34/2}}
-									titleStyle={style.titleContainer}
-									rightIcon ={Icons.star}
+							    key={index}
+							    containerStyle={style.listItemContainer}
+							    roundAvatar
+							    title={subreddit.display_name_prefixed}
+							    avatar = {subreddit.icon_img ? {uri:subreddit.icon_img} : Images.redditImage}
+							    avatarStyle	= {{backgroundColor: subreddit.key_color ? subreddit.key_color : '#20b2aa', borderRadius:34/2}}
+							    titleStyle={style.titleContainer}
+							    rightIcon ={Icons.star}
 								 />
 						}) : null}
 			</ScrollView>
